@@ -1,6 +1,8 @@
-In some cases you want to write your UI in Ractive but have a custom back-end manage the data. [Adaptors](../Plugin Authoring/Adaptors.md) allow you to teach Ractive how to talk to those custom data sources without having to change the way you write Ractive or having to write a lot of connector code up front.
+# Adaptors
 
-# Writing
+In some cases you want to write your UI in Ractive but have a custom back-end manage the data. [Adaptors](../Extend/Adaptors.md) allow you to teach Ractive how to talk to those custom data sources without having to change the way you write Ractive or having to write a lot of connector code up front.
+
+## Writing
 
 ```js
 Ractive.adaptors.myAdaptor = {
@@ -27,7 +29,7 @@ Ractive.adaptors.myAdaptor = {
 };
 ```
 
-Adaptors are simply the translation and sync layers between your custom data source and Ractive instances. The basic principle of an [adaptor](../Plugin Authoring/Adaptors.md) is as follows:
+Adaptors are simply the translation and sync layers between your custom data source and Ractive instances. The basic principle of an [adaptor](../Extend/Adaptors.md) is as follows:
 
 1. Provides an POJO version of your data source to Ractive.
 2. Captures data changes on your data source and mirror them to the data in Ractive.
@@ -39,41 +41,41 @@ Whether it's a third-party data modelling library, a RESTful service, a socket s
 
 `object` is the data source to adapt.
 
-`keypath` is the [keypath](../Under The Hood/Templates/Keypaths.md) to `object`.
+`keypath` is the [keypath](../Concepts/Templates/Keypaths.md) to `object`.
 
 `ractive` is the ractive instance that is currently using the adaptor.
 
-`wrap` is a function that gets called to set up the [adaptor](../Plugin Authoring/Adaptors.md) on `object`.
+`wrap` is a function that gets called to set up the [adaptor](../Extend/Adaptors.md) on `object`.
 
 `prefixer` is a helper function that accepts an object and automatically prefixes `keypath` to the object's keys.
 
 `get` is a function that gets called when Ractive needs the adapted representation of the `object`.
 
-`set` is a function that is called when `ractive.set()` updates a [keypath](../Under The Hood/Templates/Keypaths.md) to a property of the adapted data. This function allows you to update the same property on `object`.
+`set` is a function that is called when `ractive.set()` updates a [keypath](../Concepts/Templates/Keypaths.md) to a property of the adapted data. This function allows you to update the same property on `object`.
 
-`property` is the [keypath](../Under The Hood/Templates/Keypaths.md) to the property being updated, relative to `keypath`.
+`property` is the [keypath](../Concepts/Templates/Keypaths.md) to the property being updated, relative to `keypath`.
 
 `value` is the value being passed into `ractive.set()`.
 
-`reset` is a function that is called when `ractive.set()` updates a [keypath](../Under The Hood/Templates/Keypaths.md) to the adapted data. This function allows you to either update `object` or tear down the adaptor.
+`reset` is a function that is called when `ractive.set()` updates a [keypath](../Concepts/Templates/Keypaths.md) to the adapted data. This function allows you to either update `object` or tear down the adaptor.
 
-`teardown` is a function called when the [adaptor](../Plugin Authoring/Adaptors.md) is being removed. This function allows you to do cleanup work on anything that was done during the [adaptor](../Plugin Authoring/Adaptors.md) setup.
+`teardown` is a function called when the [adaptor](../Extend/Adaptors.md) is being removed. This function allows you to do cleanup work on anything that was done during the [adaptor](../Extend/Adaptors.md) setup.
 
-## [Adaptors](../Plugin Authoring/Adaptors.md) only adapt one level
+### [Adaptors](../Extend/Adaptors.md) only adapt one level
 
-An [adaptor](../Plugin Authoring/Adaptors.md) only adapts an object's immediate properties. Updating nested data via Ractive or via the data source will not update the other.
+An [adaptor](../Extend/Adaptors.md) only adapts an object's immediate properties. Updating nested data via Ractive or via the data source will not update the other.
 
-## No built-in infinite loop detection
+### No built-in infinite loop detection
 
-There is no built-in mechanism for avoiding infinite loops. If your [adaptor](../Plugin Authoring/Adaptors.md) calls `ractive.set()` on adapted data, which in turn will call the adaptor's `set()` method, which may directly or indirectly trigger another `ractive.set()` on the same adapted data, a stack overflow error might occur.
+There is no built-in mechanism for avoiding infinite loops. If your [adaptor](../Extend/Adaptors.md) calls `ractive.set()` on adapted data, which in turn will call the adaptor's `set()` method, which may directly or indirectly trigger another `ractive.set()` on the same adapted data, a stack overflow error might occur.
 
 This isn't a problem with primitive values since Ractive doesn't bother calling `set()` if a value hasn't changed. But with objects and arrays, there's no easy and performant way to tell if the contents have changed. So `set()` gets called *in case something changed* rather than *because something changed*.
 
-## Different for every back-end
+### Different for every back-end
 
-The [adaptor](../Plugin Authoring/Adaptors.md) structure only provides you with the means to talk to and listen from a custom back-end. It does not impose any rules on how to write an [adaptor](../Plugin Authoring/Adaptors.md) for a certain back-end. For instance, an [adaptor](../Plugin Authoring/Adaptors.md) for a constructor-based object may be written differently from an [adaptor](../Plugin Authoring/Adaptors.md) meant to interact with a socket server.
+The [adaptor](../Extend/Adaptors.md) structure only provides you with the means to talk to and listen from a custom back-end. It does not impose any rules on how to write an [adaptor](../Extend/Adaptors.md) for a certain back-end. For instance, an [adaptor](../Extend/Adaptors.md) for a constructor-based object may be written differently from an [adaptor](../Extend/Adaptors.md) meant to interact with a socket server.
 
-# Registering
+## Registering
 
 Like other plugins, there's 3 ways you can register adaptors:
 
@@ -103,7 +105,7 @@ const ractive = new Ractive({
 });
 ```
 
-# Using
+## Using
 
 In order to use an adaptor, you must tell the component or an instance to use it using the `adapt` [initialization option](../API/Initialization Options.md).
 
@@ -113,7 +115,7 @@ const ractive = new Ractive({
 })
 ```
 
-# Examples
+## Examples
 
 In the following example, we have a `Box` constructor that uses accessors to get and set its `width` and `height` properties. Since an instance of `Box` will have no publicly visible properties, Ractive cannot bind to them directly.
 
@@ -129,7 +131,7 @@ function Box(width, height){
 }
 ```
 
-In order for Ractive to properly use a `Box` instance, we build an [adaptor](../Plugin Authoring/Adaptors.md) for `Box`.
+In order for Ractive to properly use a `Box` instance, we build an [adaptor](../Extend/Adaptors.md) for `Box`.
 
 ```js
 Ractive.adaptors.boxAdaptor = {

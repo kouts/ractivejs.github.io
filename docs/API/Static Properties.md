@@ -1,20 +1,22 @@
-# Ractive.adaptors
+# Static Properties
+
+## Ractive.adaptors
 
 _`(Object<string, Object>)`_
 
-The registry of globally available [adaptors](../Plugin Authoring/Adaptors.md).
+The registry of globally available [adaptors](../Extend/Adaptors.md).
 
 ---
 
-# Ractive.components
+## Ractive.components
 
 _`(Object<string, Function>)`_
 
-The registry of globally available [component definitions](../Plugin Authoring/Components.md).
+The registry of globally available [component definitions](../Extend/Components.md).
 
 ---
 
-# Ractive.DEBUG
+## Ractive.DEBUG
 
 _`(boolean)`_
 
@@ -22,7 +24,7 @@ Tells Ractive if it's in debug mode or not. When set to `true`, non-fatal errors
 
 ---
 
-# Ractive.DEBUG_PROMISES
+## Ractive.DEBUG_PROMISES
 
 _`(boolean)`_
 
@@ -30,15 +32,15 @@ Tells Ractive to log errors thrown inside promises. When set to `true`, errors t
 
 ---
 
-# Ractive.decorators
+## Ractive.decorators
 
 _`(Object<string, Function>)`_
 
-The registry of globally available [decorators](../Plugin Authoring/Decorators.md).
+The registry of globally available [decorators](../Extend/Decorators.md).
 
 ---
 
-# Ractive.defaults
+## Ractive.defaults
 
 _`(Object<string, any>)`_
 
@@ -81,25 +83,25 @@ MyRactive.defaults.el = document.body;
 
 ---
 
-# Ractive.easing
+## Ractive.easing
 
 _`(Object<string, Function>)`_
 
-The global registry of [easing functions](../Plugin Authoring/Easings.md).
+The global registry of [easing functions](../Extend/Easings.md).
 
-The easing functions are used by the [`ractive.animate`](../API/Instance Methods.md#ractive.animate) method and by [transitions](../Plugin Authoring/Transitions.md). Four are included by default: `linear`, `easeIn`, `easeOut` and `easeInOut`.
+The easing functions are used by the [`ractive.animate`](../API/Instance Methods.md#ractive.animate) method and by [transitions](../Extend/Transitions.md). Four are included by default: `linear`, `easeIn`, `easeOut` and `easeInOut`.
 
 ---
 
-# Ractive.events
+## Ractive.events
 
 _`(Object<string, Function>)`_
 
-The global registry of [events](../Plugin Authoring/Events.md).
+The global registry of [events](../Extend/Events.md).
 
 ---
 
-# Ractive.interpolators
+## Ractive.interpolators
 
 _`(Object<string, Function>)`_
 
@@ -107,35 +109,35 @@ A key-value hash of interpolators use by [`ractive.animate()`](../API/Instance M
 
 ---
 
-# Ractive.length
+## Ractive.length
 
 TODO
 
 ---
 
-# Ractive.magic
+## Ractive.magic
 
 TODO
 
 ---
 
-# Ractive.name
+## Ractive.name
 
 TODO
 
 ---
 
-# Ractive.partials
+## Ractive.partials
 
 _`(Object<string, string|Object|Function>)`_
 
-The global registry of [partial templates](../Plugin Authoring/Partials.md).
+The global registry of [partial templates](../Extend/Partials.md).
 
-Like [templates](../Under The Hood/Templates/Templates.md), partials are [parsed](../Under The Hood/Templates/Parsing.md) at the point of use. The parsed output is cached and utilized for future use.
+Like [templates](../Concepts/Templates/Overview.md), partials are [parsed](../Concepts/Templates/Parsing.md) at the point of use. The parsed output is cached and utilized for future use.
 
 ---
 
-# Ractive.Promise
+## Ractive.Promise
 
 _`(Function)`_
 
@@ -143,7 +145,7 @@ A spec-compliant Promise implementation.
 
 ---
 
-# Ractive.svg
+## Ractive.svg
 
 _`(boolean)`_
 
@@ -151,14 +153,14 @@ Indicates if the browser supports SVG.
 
 ---
 
-# Ractive.transitions
+## Ractive.transitions
 
 _`(Object<string, Function>)`_
 
-The global registry of [transition functions](../Plugin Authoring/Transitions.md).
+The global registry of [transition functions](../Extend/Transitions.md).
 
 ---
 
-# Ractive.VERSION
+## Ractive.VERSION
 
 The version of the currently loaded Ractive.

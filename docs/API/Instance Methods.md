@@ -1,4 +1,6 @@
-# ractive._super()
+# Instance Methods
+
+## ractive._super()
 
 Calls the parent method from a child method of the same name.
 
@@ -30,7 +32,7 @@ const MyComponentSubclass = MyComponent.exten({
 
 ---
 
-# ractive.add()
+## ractive.add()
 
 Increments the selected keypath.
 
@@ -40,7 +42,7 @@ Increments the selected keypath.
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the number we're incrementing.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) of the number we're incrementing.
 - `[number] (number)`: The number to increment by. Defaults to `1`.
 
 **Returns**
@@ -55,9 +57,9 @@ Increments the selected keypath.
 
 ---
 
-# ractive.animate()
+## ractive.animate()
 
-Similar to [`ractive.set()`](../API/Instance Methods.md#ractive.set()), this will update the data and re-render any affected mustaches and notify [observers](../Under The Hood/Events/Publish-Subscribe.md).
+Similar to [`ractive.set()`](../API/Instance Methods.md#ractive.set()), this will update the data and re-render any affected mustaches and notify [observers](../Concepts/Events/Publish-Subscribe.md).
 
 All animations are handled by a global timer that is shared between Ractive instances (and which only runs if there are one or more animations still in progress), so you can trigger as many separate animations as you like without worrying about timer congestion. Where possible, `requestAnimationFrame` is used rather than `setTimeout`.
 
@@ -67,7 +69,7 @@ Note that there is currently no mechanism for detecting cyclical structures! Ani
 
 Future versions of Ractive may include string interpolators - e.g. for SVG paths, colours, transformations and so on, a la D3 - and the ability to pass in your own interpolator.
 
-If an animation is started on a [keypath](../Under The Hood/Templates/Keypaths.md) which is *already* being animated, the first animation is cancelled. (Currently, there is no mechanism in place to prevent collisions between e.g. `ractive.animate('foo', { bar: 1 })` and `ractive.animate('foo.bar', 0)`.)
+If an animation is started on a [keypath](../Concepts/Templates/Keypaths.md) which is *already* being animated, the first animation is cancelled. (Currently, there is no mechanism in place to prevent collisions between e.g. `ractive.animate('foo', { bar: 1 })` and `ractive.animate('foo.bar', 0)`.)
 
 **Syntax**
 
@@ -76,9 +78,9 @@ If an animation is started on a [keypath](../Under The Hood/Templates/Keypaths.m
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) to animate.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) to animate.
 - `value (number|string|Object|Array)`: The value to animate to.
-- `map (Object)`: A key-value hash of [keypath](../Under The Hood/Templates/Keypaths.md) and value.
+- `map (Object)`: A key-value hash of [keypath](../Concepts/Templates/Keypaths.md) and value.
 - `[options] (Object)`:
     - `[duration] (number)`: How many milliseconds the animation should run for. Defaults to `400`.
     - `[easing] (string|Function)`: The name of an easing function or the easing function itself. Defaults to `linear`.
@@ -97,7 +99,7 @@ If an animation is started on a [keypath](../Under The Hood/Templates/Keypaths.m
 
 ---
 
-# ractive.detach()
+## ractive.detach()
 
 Detaches the instance from the DOM, returning a document fragment. You can reinsert it, possibly in a different place, with [`ractive.insert()`](../API/Instance Methods.md#ractive.insert()) (note that if you are reinserting it immediately you don't need to detach it first - it will happen automatically).
 
@@ -121,7 +123,7 @@ Detaches the instance from the DOM, returning a document fragment. You can reins
 
 ---
 
-# ractive.find()
+## ractive.find()
 
 Returns the first element inside a given Ractive instance matching a CSS selector. This is similar to doing `this.el.querySelector(selector)` (though it doesn't actually use `querySelector()`).
 
@@ -146,7 +148,7 @@ Returns the first element inside a given Ractive instance matching a CSS selecto
 
 ---
 
-# ractive.findAll()
+## ractive.findAll()
 
 This method is similar to [`ractive.find()`](../API/Instance Methods.md#ractive.find()), with two important differences. Firstly, it returns a list of elements matching the selector, rather than a single node. Secondly, it can return a *live* list, which will stay in sync with the DOM as it continues to update.
 
@@ -172,7 +174,7 @@ This method is similar to [`ractive.find()`](../API/Instance Methods.md#ractive.
 
 ---
 
-# ractive.findAllComponents()
+## ractive.findAllComponents()
 
 Returns all components inside a given Ractive instance with the given `name` (or all components of any kind if no name is given).
 
@@ -198,7 +200,7 @@ Returns all components inside a given Ractive instance with the given `name` (or
 
 ---
 
-# ractive.findComponent()
+## ractive.findComponent()
 
 Returns the first component inside a given Ractive instance with the given `name` (or the first component of any kind if no name is given).
 
@@ -223,7 +225,7 @@ Returns the first component inside a given Ractive instance with the given `name
 
 ---
 
-# ractive.findContainer()
+## ractive.findContainer()
 
 Returns the first container of this component instance with the given `name`.
 
@@ -247,7 +249,7 @@ Returns the first container of this component instance with the given `name`.
 
 ---
 
-# ractive.findParent()
+## ractive.findParent()
 
 Returns the first parent of this component instance with the given `name`.
 
@@ -271,7 +273,7 @@ Returns the first parent of this component instance with the given `name`.
 
 ---
 
-# ractive.fire()
+## ractive.fire()
 
 Fires an event, which will be received by handlers that were bound using `ractive.on`. In practical terms, you would mostly likely use this with [`Ractive.extend()`](../API/Static Methods.md#Ractive.extend()), to allow applications to hook into your subclass.
 
@@ -296,9 +298,9 @@ Fires an event, which will be received by handlers that were bound using `ractiv
 
 ---
 
-# ractive.get()
+## ractive.get()
 
-Returns the value at `keypath`. If the [keypath](../Under The Hood/Templates/Keypaths.md) is omitted, returns a shallow copy of all the data in the instance. This data includes mappings introduced by enclosing components, but excludes computed properties.
+Returns the value at `keypath`. If the [keypath](../Concepts/Templates/Keypaths.md) is omitted, returns a shallow copy of all the data in the instance. This data includes mappings introduced by enclosing components, but excludes computed properties.
 
 **Syntax**
 
@@ -306,11 +308,11 @@ Returns the value at `keypath`. If the [keypath](../Under The Hood/Templates/Key
 
 **Arguments**
 
-- `[keypath] (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the data to retrieve.
+- `[keypath] (string)`: The [keypath](../Concepts/Templates/Keypaths.md) of the data to retrieve.
 
 **Returns**
 
-- `(any)`: Returns whatever data was on the keypath, or all if no [keypath](../Under The Hood/Templates/Keypaths.md) was provided.
+- `(any)`: Returns whatever data was on the keypath, or all if no [keypath](../Concepts/Templates/Keypaths.md) was provided.
 
 **Examples**
 
@@ -320,7 +322,7 @@ Returns the value at `keypath`. If the [keypath](../Under The Hood/Templates/Key
 
 ---
 
-# ractive.getNodeInfo()
+## ractive.getNodeInfo()
 
 This is an instance specific version of [`Ractive.getNodeInfo()`](../API/Static Methods.md#Ractive.getNodeInfo()) that will only search the local instance DOM for a matching node when a selector is given. If the given value is not a string, then it is passed directly through to the static version of this method.
 
@@ -334,7 +336,7 @@ This is an instance specific version of [`Ractive.getNodeInfo()`](../API/Static 
 
 **Returns**
 
-- `(NodeInfo)`: Returns an [NodeInfo](../Helper Objects/Node Info Object.md) object with helper methods to interact with the Ractive instance and context associated with the given node.
+- `(NodeInfo)`: Returns an [NodeInfo](Helper Objects/Node Info.md) object with helper methods to interact with the Ractive instance and context associated with the given node.
 
 **Examples**
 
@@ -344,7 +346,7 @@ This is an instance specific version of [`Ractive.getNodeInfo()`](../API/Static 
 
 ---
 
-# ractive.insert()
+## ractive.insert()
 
 Inserts the instance to a different location. If the instance is currently in the DOM, it will be detached first. See also [`ractive.detach()`](../API/Instance Methods.md#ractive.detach()).
 
@@ -369,9 +371,9 @@ Inserts the instance to a different location. If the instance is currently in th
 
 ---
 
-# ractive.link()
+## ractive.link()
 
-Creates a link between two [keypaths](../Under The Hood/Templates/Keypaths.md) that keeps them in sync. Since Ractive can't always watch the contents of objects, copying an object to two different [keypaths](../Under The Hood/Templates/Keypaths.md) in your data usually leads to one or both of them getting out of sync. `link` creates a sort of symlink between the two paths so that Ractive knows they are actually the same object. This is particularly useful for master/detail scenarios where you have a complex list of data and you want to be able to select an item to edit in a detail form.
+Creates a link between two [keypaths](../Concepts/Templates/Keypaths.md) that keeps them in sync. Since Ractive can't always watch the contents of objects, copying an object to two different [keypaths](../Concepts/Templates/Keypaths.md) in your data usually leads to one or both of them getting out of sync. `link` creates a sort of symlink between the two paths so that Ractive knows they are actually the same object. This is particularly useful for master/detail scenarios where you have a complex list of data and you want to be able to select an item to edit in a detail form.
 
 **Syntax**
 
@@ -379,8 +381,8 @@ Creates a link between two [keypaths](../Under The Hood/Templates/Keypaths.md) t
 
 **Arguments**
 
-- `source (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the source item.
-- `destination (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) to use as the destination - or where you'd like the data 'copied'.
+- `source (string)`: The [keypath](../Concepts/Templates/Keypaths.md) of the source item.
+- `destination (string)`: The [keypath](../Concepts/Templates/Keypaths.md) to use as the destination - or where you'd like the data 'copied'.
 
 **Returns**
 
@@ -393,7 +395,7 @@ ractive.link( 'some.nested.0.list.25.item', 'current' );
 ractive.set( 'current.name', 'Rich' ); // some.nested.0.list.25.item.name is also updated to be 'Rich'
 ```
 
-This can be used to great effect with method events and the [`@keypath`](../Under The Hood/Templates/References.md) special ref:
+This can be used to great effect with method events and the [`@keypath`](../Concepts/Templates/References.md) special ref:
 
 ```html
 {{#each some.nested}}
@@ -412,11 +414,11 @@ Links can be removed using [`ractive.unlink()`](../API/Instance Methods.md#racti
 
 ---
 
-# ractive.merge()
+## ractive.merge()
 
-Sets the indicated [keypath](../Under The Hood/Templates/Keypaths.md) to the new array value, but "merges" the existing rendered nodes representing the data into the newly rendered array, inserting and removing nodes from the DOM as necessary. Where necessary, items are moved from their current location in the array (and, therefore, in the DOM) to their new location.
+Sets the indicated [keypath](../Concepts/Templates/Keypaths.md) to the new array value, but "merges" the existing rendered nodes representing the data into the newly rendered array, inserting and removing nodes from the DOM as necessary. Where necessary, items are moved from their current location in the array (and, therefore, in the DOM) to their new location.
 
-This is an efficient way to (for example) handle data from a server. It also helps to control `intro` and `outro` [transitions](../Plugin Authoring/Transitions.md) which might not otherwise happen with a basic [`ractive.set()`](../API/Instance Methods.md#ractive.set()) operation.
+This is an efficient way to (for example) handle data from a server. It also helps to control `intro` and `outro` [transitions](../Extend/Transitions.md) which might not otherwise happen with a basic [`ractive.set()`](../API/Instance Methods.md#ractive.set()) operation.
 
 To determine whether the first item of `['foo', 'bar', 'baz']` is the same as the last item of `['bar', 'baz', 'foo']`, by default we do a strict equality (`===`) check.
 
@@ -430,7 +432,7 @@ Merge can also be used to created a context block that uses transitions when the
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the array we're updating.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) of the array we're updating.
 - `value (Array)`: The new data to merge in.
 - `[options] (Object)`
     - `[compare] (boolean)`: If `true`, values will be stringified (with `JSON.stringify`) before comparison.
@@ -471,9 +473,9 @@ var r = new Ractive({
 
 ---
 
-# ractive.observe()
+## ractive.observe()
 
-Observes the data at a particular [keypath](../Under The Hood/Templates/Keypaths.md). Unless specified otherwise, the callback will be fired immediately, with `undefined` as `oldValue`. Thereafter it will be called whenever the *observed keypath* changes.
+Observes the data at a particular [keypath](../Concepts/Templates/Keypaths.md). Unless specified otherwise, the callback will be fired immediately, with `undefined` as `oldValue`. Thereafter it will be called whenever the *observed keypath* changes.
 
 **Syntax**
 
@@ -482,13 +484,13 @@ Observes the data at a particular [keypath](../Under The Hood/Templates/Keypaths
 
 **Arguments**
 
-- `keypath (String)`: The [keypath](../Under The Hood/Templates/Keypaths.md) to observe, or a group of space-separated keypaths. Any of the keys can be a `*` character, which is treated as a wildcard.
-- `callback (Function)`: The function that will be called, with `newValue`, `oldValue` and `keypath` as arguments (see [Observers](../Under The Hood/Events/Publish-Subscribe.md) for more nuance regarding these arguments), whenever the observed [keypath](../Under The Hood/Templates/Keypaths.md) changes value. By default the function will be called with `ractive` as `this`. Any wildcards in the [keypath](../Under The Hood/Templates/Keypaths.md) will have their matches passed to the callback at the end of the arguments list as well.
+- `keypath (String)`: The [keypath](../Concepts/Templates/Keypaths.md) to observe, or a group of space-separated keypaths. Any of the keys can be a `*` character, which is treated as a wildcard.
+- `callback (Function)`: The function that will be called, with `newValue`, `oldValue` and `keypath` as arguments (see [Observers](../Concepts/Events/Publish-Subscribe.md) for more nuance regarding these arguments), whenever the observed [keypath](../Concepts/Templates/Keypaths.md) changes value. By default the function will be called with `ractive` as `this`. Any wildcards in the [keypath](../Concepts/Templates/Keypaths.md) will have their matches passed to the callback at the end of the arguments list as well.
 - `map (Object)`: A map of keypath-observer pairs.
 - `[options] (Object)`:
     - `[init] (boolean)`: Defaults to `true`. Whether or not to initialise the observer, i.e. call the function with the current value of `keypath` as the first argument and `undefined` as the second.
-    - `[defer] (boolean)`: Defaults to `false`, in which case [observers](../Under The Hood/Events/Publish-Subscribe.md) will fire before any DOM changes take place. If `true`, the [observer](../Under The Hood/Events/Publish-Subscribe.md) will fire once the DOM has been updated.
-    - `[context] (any)`: Defaults to `ractive`. The context the [observer](../Under The Hood/Events/Publish-Subscribe.md) is called in (i.e. the value of `this`)
+    - `[defer] (boolean)`: Defaults to `false`, in which case [observers](../Concepts/Events/Publish-Subscribe.md) will fire before any DOM changes take place. If `true`, the [observer](../Concepts/Events/Publish-Subscribe.md) will fire once the DOM has been updated.
+    - `[context] (any)`: Defaults to `ractive`. The context the [observer](../Concepts/Events/Publish-Subscribe.md) is called in (i.e. the value of `this`)
 
 **Returns**
 
@@ -500,30 +502,30 @@ Observes the data at a particular [keypath](../Under The Hood/Templates/Keypaths
 // TODO
 ```
 
-Note that you can observe [keypath](../Under The Hood/Templates/Keypaths.md) *patterns*...
+Note that you can observe [keypath](../Concepts/Templates/Keypaths.md) *patterns*...
 
 ```js
-ractive.observe( 'items.*.status', function ( newValue, oldValue, [keypath](../Under The Hood/Templates/Keypaths.md) ) {
-	var index = /items.(\d+).status/.exec( [keypath](../Under The Hood/Templates/Keypaths.md) )[1];
+ractive.observe( 'items.*.status', function ( newValue, oldValue, [keypath](../Concepts/Templates/Keypaths.md) ) {
+	var index = /items.(\d+).status/.exec( [keypath](../Concepts/Templates/Keypaths.md) )[1];
 	alert( 'item ' + index + ' status changed from ' + oldValue + ' to ' + newValue );
 });
 ```
 
-...or multiple space-separated [keypaths](../Under The Hood/Templates/Keypaths.md) simultaneously:
+...or multiple space-separated [keypaths](../Concepts/Templates/Keypaths.md) simultaneously:
 
 ```js
-ractive.observe( 'foo bar baz', function ( newValue, oldValue, [keypath](../Under The Hood/Templates/Keypaths.md) ) {
-	alert( [keypath](../Under The Hood/Templates/Keypaths.md) + ' changed from ' + oldValue + ' to ' + newValue );
+ractive.observe( 'foo bar baz', function ( newValue, oldValue, [keypath](../Concepts/Templates/Keypaths.md) ) {
+	alert( [keypath](../Concepts/Templates/Keypaths.md) + ' changed from ' + oldValue + ' to ' + newValue );
 });
 ```
 
-See [Observers](../Under The Hood/Events/Publish-Subscribe.md) for more detail.
+See [Observers](../Concepts/Events/Publish-Subscribe.md) for more detail.
 
 ---
 
-# ractive.observeOnce()
+## ractive.observeOnce()
 
-Observes the data at a particular [keypath](../Under The Hood/Templates/Keypaths.md) until the first change. After the handler has been called, it will be unsubscribed from any future changes.
+Observes the data at a particular [keypath](../Concepts/Templates/Keypaths.md) until the first change. After the handler has been called, it will be unsubscribed from any future changes.
 
 **Syntax**
 
@@ -531,11 +533,11 @@ Observes the data at a particular [keypath](../Under The Hood/Templates/Keypaths
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) to observe, or a group of space-separated keypaths. Any of the keys can be a `*` character, which is treated as a wildcard.
-- `callback (Function)`: The function that will be called, with `newValue`, `oldValue` and `keypath` as arguments (see [Observers](../Under The Hood/Events/Publish-Subscribe.md) for more nuance regarding these arguments), whenever the observed [keypath](../Under The Hood/Templates/Keypaths.md) changes value. By default the function will be called with `ractive` as `this`. Any wildcards in the [keypath](../Under The Hood/Templates/Keypaths.md) will have their matches passed to the callback at the end of the arguments list as well.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) to observe, or a group of space-separated keypaths. Any of the keys can be a `*` character, which is treated as a wildcard.
+- `callback (Function)`: The function that will be called, with `newValue`, `oldValue` and `keypath` as arguments (see [Observers](../Concepts/Events/Publish-Subscribe.md) for more nuance regarding these arguments), whenever the observed [keypath](../Concepts/Templates/Keypaths.md) changes value. By default the function will be called with `ractive` as `this`. Any wildcards in the [keypath](../Concepts/Templates/Keypaths.md) will have their matches passed to the callback at the end of the arguments list as well.
 - `[options] (Object)`:
-    - `[defer] (boolean)`: Defaults to `false`, in which case [observers](../Under The Hood/Events/Publish-Subscribe.md) will fire before any DOM changes take place. If `true`, the [observer](../Under The Hood/Events/Publish-Subscribe.md) will fire once the DOM has been updated.
-    - `[context] (any)`: Defaults to `ractive`. The context the [observer](../Under The Hood/Events/Publish-Subscribe.md) is called in (i.e. the value of `this`)
+    - `[defer] (boolean)`: Defaults to `false`, in which case [observers](../Concepts/Events/Publish-Subscribe.md) will fire before any DOM changes take place. If `true`, the [observer](../Concepts/Events/Publish-Subscribe.md) will fire once the DOM has been updated.
+    - `[context] (any)`: Defaults to `ractive`. The context the [observer](../Concepts/Events/Publish-Subscribe.md) is called in (i.e. the value of `this`)
 
 **Returns**
 
@@ -547,28 +549,28 @@ Observes the data at a particular [keypath](../Under The Hood/Templates/Keypaths
 // TODO
 ```
 
-Note that you can observe [keypath](../Under The Hood/Templates/Keypaths.md) *patterns*...
+Note that you can observe [keypath](../Concepts/Templates/Keypaths.md) *patterns*...
 
 ```js
-ractive.observeOnce( 'items.*.status', function ( newValue, oldValue, [keypath](../Under The Hood/Templates/Keypaths.md) ) {
-	var index = /items.(\d+).status/.exec( [keypath](../Under The Hood/Templates/Keypaths.md) )[1];
+ractive.observeOnce( 'items.*.status', function ( newValue, oldValue, [keypath](../Concepts/Templates/Keypaths.md) ) {
+	var index = /items.(\d+).status/.exec( [keypath](../Concepts/Templates/Keypaths.md) )[1];
 	alert( 'item ' + index + ' status changed from ' + oldValue + ' to ' + newValue );
 });
 ```
 
-...or multiple space-separated [keypaths](../Under The Hood/Templates/Keypaths.md) simultaneously:
+...or multiple space-separated [keypaths](../Concepts/Templates/Keypaths.md) simultaneously:
 
 ```js
-ractive.observeOnce( 'foo bar baz', function ( newValue, oldValue, [keypath](../Under The Hood/Templates/Keypaths.md) ) {
-	alert( [keypath](../Under The Hood/Templates/Keypaths.md) + ' changed from ' + oldValue + ' to ' + newValue );
+ractive.observeOnce( 'foo bar baz', function ( newValue, oldValue, [keypath](../Concepts/Templates/Keypaths.md) ) {
+	alert( [keypath](../Concepts/Templates/Keypaths.md) + ' changed from ' + oldValue + ' to ' + newValue );
 });
 ```
 
-See [Observers](../Under The Hood/Events/Publish-Subscribe.md) for more detail.
+See [Observers](../Concepts/Events/Publish-Subscribe.md) for more detail.
 
 ---
 
-# ractive.off()
+## ractive.off()
 
 Removes an event handler, several event handlers, or all event handlers.
 
@@ -597,9 +599,9 @@ An alternative way to remove event handlers is to use the `cancel` method of the
 
 ---
 
-# ractive.on()
+## ractive.on()
 
-Subscribe to [events](../Plugin Authoring/Events.md).
+Subscribe to [events](../Extend/Events.md).
 
 **Syntax**
 
@@ -609,7 +611,7 @@ Subscribe to [events](../Plugin Authoring/Events.md).
 **Arguments**
 
 - `eventName (String)`: The name of the event to subscribe to
-- `handler (Function)`: The function that will be called, with `ractive` as `this`. The arguments depend on the event. Returning `false` from the handler will stop propagation and prevent default of DOM events and cancel [event bubbling](../Plugin Authoring/Events.md).
+- `handler (Function)`: The function that will be called, with `ractive` as `this`. The arguments depend on the event. Returning `false` from the handler will stop propagation and prevent default of DOM events and cancel [event bubbling](../Extend/Events.md).
 - `obj (Object)`: An object with keys named for each event to subscribe to. The value at each key is the handler function for that event.
 
 **Returns**
@@ -645,7 +647,7 @@ ractive.on({
 
 ---
 
-# ractive.once()
+## ractive.once()
 
 Subscribe to an event for a single firing. This is a convenience function on top of [`ractive.on()`](../API/Instance Methods.md#ractive.on()).
 
@@ -656,7 +658,7 @@ Subscribe to an event for a single firing. This is a convenience function on top
 **Arguments**
 
 - `eventName (string)`: The name of the event to subscribe to.
-- `handler (Function)`: The function that will be called, with `ractive` as `this`. The arguments depend on the event. Returning `false` from the handler will stop propagation and prevent default of DOM events and cancel [event bubbling](../Plugin Authoring/Events.md).
+- `handler (Function)`: The function that will be called, with `ractive` as `this`. The arguments depend on the event. Returning `false` from the handler will stop propagation and prevent default of DOM events and cancel [event bubbling](../Extend/Events.md).
 
 **Returns**
 
@@ -670,11 +672,11 @@ Subscribe to an event for a single firing. This is a convenience function on top
 
 ---
 
-# ractive.pop()
+## ractive.pop()
 
-The Ractive equivalent to ```Array.pop``` that removes an element from the end of the array at the given [keypath](../Under The Hood/Templates/Keypaths.md) and triggers an update event.
+The Ractive equivalent to ```Array.pop``` that removes an element from the end of the array at the given [keypath](../Concepts/Templates/Keypaths.md) and triggers an update event.
 
-If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (is `undefined`), an empty array will be supplied instead. Otherwise, if the given [keypath](../Under The Hood/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
+If the given [keypath](../Concepts/Templates/Keypaths.md) does not exist (is `undefined`), an empty array will be supplied instead. Otherwise, if the given [keypath](../Concepts/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
 
 **Syntax**
 
@@ -682,7 +684,7 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the array to change, e.g. `list` or `order.items`.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) of the array to change, e.g. `list` or `order.items`.
 
 **Returns**
 
@@ -696,11 +698,11 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (
 
 ---
 
-# ractive.push()
+## ractive.push()
 
-The Ractive equivalent to ```Array.push``` that appends one or more elements to the array at the given [keypath](../Under The Hood/Templates/Keypaths.md) and triggers an update event.
+The Ractive equivalent to ```Array.push``` that appends one or more elements to the array at the given [keypath](../Concepts/Templates/Keypaths.md) and triggers an update event.
 
-If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (is `undefined`), an empty array will be supplied instead. Otherwise, if the given [keypath](../Under The Hood/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
+If the given [keypath](../Concepts/Templates/Keypaths.md) does not exist (is `undefined`), an empty array will be supplied instead. Otherwise, if the given [keypath](../Concepts/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
 
 **Syntax**
 
@@ -708,7 +710,7 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the array to change, e.g. `list` or `order.items`.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) of the array to change, e.g. `list` or `order.items`.
 - `value (any)`: The value to append to the end of the array. One or more values may be supplied.
 
 **Returns**
@@ -723,7 +725,7 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (
 
 ---
 
-# ractive.render()
+## ractive.render()
 
 Renders the component into a DOM element.
 
@@ -747,7 +749,7 @@ Renders the component into a DOM element.
 
 ---
 
-# ractive.reset()
+## ractive.reset()
 
 Resets the entire `ractive.data` object and updates the DOM.
 
@@ -782,7 +784,7 @@ console.log( ractive.get() ); // { bar: 2 }
 
 ---
 
-# ractive.resetPartial()
+## ractive.resetPartial()
 
 Resets a partial and re-renders all of its use-sites, including in any components that have inherited it. If a component has a partial with a same name that is its own, that partial will not be affected.
 
@@ -818,11 +820,11 @@ ractive.resetPartial('foo', 'bar');
 
 ---
 
-# ractive.reverse()
+## ractive.reverse()
 
-The Ractive equivalent to ```Array.reverse``` reverses the array at the given [keypath](../Under The Hood/Templates/Keypaths.md) and triggers an update event.
+The Ractive equivalent to ```Array.reverse``` reverses the array at the given [keypath](../Concepts/Templates/Keypaths.md) and triggers an update event.
 
-If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
+If the given [keypath](../Concepts/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
 
 **Syntax**
 
@@ -830,7 +832,7 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not resolve
 
 **Arguments**
 
-- `keypath (String)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the array to reverse, e.g. `list` or `order.items`
+- `keypath (String)`: The [keypath](../Concepts/Templates/Keypaths.md) of the array to reverse, e.g. `list` or `order.items`
 
 **Returns**
 
@@ -844,14 +846,14 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not resolve
 
 ---
 
-# ractive.set()
+## ractive.set()
 
-Updates data and triggers a re-render of any mustaches that are affected (directly or indirectly) by the change. Any [observers](../Under The Hood/Events/Publish-Subscribe.md) of affected [keypaths](../Under The Hood/Templates/Keypaths.md) will be notified.
+Updates data and triggers a re-render of any mustaches that are affected (directly or indirectly) by the change. Any [observers](../Concepts/Events/Publish-Subscribe.md) of affected [keypaths](../Concepts/Templates/Keypaths.md) will be notified.
 
-A `change` [event](../Plugin Authoring/Events.md) will be fired with `keypath` and `value` as arguments
+A `change` [event](../Extend/Events.md) will be fired with `keypath` and `value` as arguments
 (or `map`, if you set multiple options at once).
 
-When setting an array value, ractive will reuse the existing DOM nodes for the new array, adding or removing nodes as necessary. This can impact nodes with [transitions](../Plugin Authoring/Transitions.md). See [`ractive.merge()`](../API/Instance Methods.md#ractive.merge()) for setting a new array value while retaining existing nodes corresponding to individual array item values.
+When setting an array value, ractive will reuse the existing DOM nodes for the new array, adding or removing nodes as necessary. This can impact nodes with [transitions](../Extend/Transitions.md). See [`ractive.merge()`](../API/Instance Methods.md#ractive.merge()) for setting a new array value while retaining existing nodes corresponding to individual array item values.
 
 **Syntax**
 
@@ -860,7 +862,7 @@ When setting an array value, ractive will reuse the existing DOM nodes for the n
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the data we're changing, e.g. `user` or `user.name` or `user.friends[1]` or `users.*.status`.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) of the data we're changing, e.g. `user` or `user.name` or `user.friends[1]` or `users.*.status`.
 - `value (any)`: The value we're changing it to. Can be a primitive or an object (or array), in which case dependants of *downstream keypaths* will also be re-rendered (if they have changed).
 - `map (Object)`: A map of `keypath: value` pairs, as above.
 
@@ -874,7 +876,7 @@ When setting an array value, ractive will reuse the existing DOM nodes for the n
 // TODO
 ```
 
-The `keypath` can also contain wildcards [pattern-observers](../Under The Hood/Events/Publish-Subscribe.md). All matching [keypaths](../Under The Hood/Templates/Keypaths.md) will be set with the supplied values:
+The `keypath` can also contain wildcards [pattern-observers](../Concepts/Events/Publish-Subscribe.md). All matching [keypaths](../Concepts/Templates/Keypaths.md) will be set with the supplied values:
 
 ```js
 ractive.on('selectAll', function(){
@@ -884,11 +886,11 @@ ractive.on('selectAll', function(){
 
 ---
 
-# ractive.shift()
+## ractive.shift()
 
-The Ractive equivalent to `Array.shift` that removes an element from the beginning of the array at the given [keypath](../Under The Hood/Templates/Keypaths.md) and triggers an update event.
+The Ractive equivalent to `Array.shift` that removes an element from the beginning of the array at the given [keypath](../Concepts/Templates/Keypaths.md) and triggers an update event.
 
-If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (is `undefined`), an empty array will be supplied instead. Otherwise, if the given [keypath](../Under The Hood/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
+If the given [keypath](../Concepts/Templates/Keypaths.md) does not exist (is `undefined`), an empty array will be supplied instead. Otherwise, if the given [keypath](../Concepts/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
 
 **Syntax**
 
@@ -896,7 +898,7 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the array to change, e.g. `list` or `order.items`.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) of the array to change, e.g. `list` or `order.items`.
 
 **Returns**
 
@@ -910,11 +912,11 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (
 
 ---
 
-# ractive.sort()
+## ractive.sort()
 
-The Ractive equivalent to ```Array.sort``` sorts the array at the given [keypath](../Under The Hood/Templates/Keypaths.md) and triggers an update event.
+The Ractive equivalent to ```Array.sort``` sorts the array at the given [keypath](../Concepts/Templates/Keypaths.md) and triggers an update event.
 
-If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
+If the given [keypath](../Concepts/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
 
 **Syntax**
 
@@ -922,7 +924,7 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not resolve
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the array to sort, e.g. `list` or `order.items`.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) of the array to sort, e.g. `list` or `order.items`.
 
 **Returns**
 
@@ -936,11 +938,11 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not resolve
 
 ---
 
-# ractive.splice()
+## ractive.splice()
 
 The Ractive equivalent to ```Array.splice``` that can add new elements to the array while removing existing elements.
 
-If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (is `undefined`), an empty array will be supplied instead. Otherwise, if the given [keypath](../Under The Hood/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
+If the given [keypath](../Concepts/Templates/Keypaths.md) does not exist (is `undefined`), an empty array will be supplied instead. Otherwise, if the given [keypath](../Concepts/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
 
 **Syntax**
 
@@ -948,7 +950,7 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the array to change, e.g. `list` or `order.items`.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) of the array to change, e.g. `list` or `order.items`.
 - `index (number)`: The index at which to start the operation.
 - `[removeCount] (number)`: The number of elements to remove starting with the element at *`index`*. This may be 0 if you don't want to remove any elements.
 - `[add] (any)`: Any elements to insert into the array starting at *`index`*. There can be 0 or more elements passed to add to the array.
@@ -965,9 +967,9 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (
 
 ---
 
-# ractive.subtract()
+## ractive.subtract()
 
-Decrements the selected [keypath](../Under The Hood/Templates/Keypaths.md).
+Decrements the selected [keypath](../Concepts/Templates/Keypaths.md).
 
 **Syntax**
 
@@ -975,7 +977,7 @@ Decrements the selected [keypath](../Under The Hood/Templates/Keypaths.md).
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the number we're decrementing.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) of the number we're decrementing.
 - `[number] (number)`: Defaults to `1`. The number to decrement by.
 
 **Returns**
@@ -990,11 +992,11 @@ Decrements the selected [keypath](../Under The Hood/Templates/Keypaths.md).
 
 ---
 
-# ractive.teardown()
+## ractive.teardown()
 
 Unrenders this Ractive instance, removing any event handlers that were bound automatically by Ractive.
 
-Calling `ractive.teardown()` causes a `teardown` [event](../Plugin Authoring/Events.md) to be fired - this is most useful with [`Ractive.extend()`](../API/Static Methods.md#Ractive.extend()) as it allows you to clean up anything else (event listeners and other bindings) that are part of the subclass.
+Calling `ractive.teardown()` causes a `teardown` [event](../Extend/Events.md) to be fired - this is most useful with [`Ractive.extend()`](../API/Static Methods.md#Ractive.extend()) as it allows you to clean up anything else (event listeners and other bindings) that are part of the subclass.
 
 **Syntax**
 
@@ -1016,7 +1018,7 @@ Calling `ractive.teardown()` causes a `teardown` [event](../Plugin Authoring/Eve
 
 ---
 
-# ractive.toCSS()
+## ractive.toCSS()
 
 Returns the scoped CSS of the current instance and its descendants.
 
@@ -1051,7 +1053,7 @@ subclassInstance.toCSS();
 
 ---
 
-# ractive.toHTML()
+## ractive.toHTML()
 
 Returns a chunk of HTML representing the current state of the instance. This is most useful when you're using Ractive in node.js, as it allows you to serve fully-rendered pages (good for SEO and initial pageload performance) to the client.
 
@@ -1075,9 +1077,9 @@ Returns a chunk of HTML representing the current state of the instance. This is 
 
 ---
 
-# ractive.toggle()
+## ractive.toggle()
 
-Toggles the selected [keypath](../Under The Hood/Templates/Keypaths.md). In other words, if `foo` is [truthy](http://james.padolsey.com/javascript/truthy-falsey/), then `ractive.toggle('foo')` will make it `false`, and vice-versa.
+Toggles the selected [keypath](../Concepts/Templates/Keypaths.md). In other words, if `foo` is [truthy](http://james.padolsey.com/javascript/truthy-falsey/), then `ractive.toggle('foo')` will make it `false`, and vice-versa.
 
 **Syntax**
 
@@ -1085,7 +1087,7 @@ Toggles the selected [keypath](../Under The Hood/Templates/Keypaths.md). In othe
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) to toggle the value of. If **keypath** is a pattern, then all matching [keypaths](../Under The Hood/Templates/Keypaths.md) will be toggled.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) to toggle the value of. If **keypath** is a pattern, then all matching [keypaths](../Concepts/Templates/Keypaths.md) will be toggled.
 
 **Returns**
 
@@ -1099,7 +1101,7 @@ Toggles the selected [keypath](../Under The Hood/Templates/Keypaths.md). In othe
 
 ---
 
-# ractive.transition()
+## ractive.transition()
 
 Triggers a transition on a node managed by this Ractive instance.
 
@@ -1125,7 +1127,7 @@ Triggers a transition on a node managed by this Ractive instance.
 
 ---
 
-# ractive.unlink()
+## ractive.unlink()
 
 Removes a link set up by [`ractive.link()`](../API/Instance Methods.md#ractive.link()).
 
@@ -1148,7 +1150,7 @@ Removes a link set up by [`ractive.link()`](../API/Instance Methods.md#ractive.l
 ```
 
 ---
-# ractive.unrender()
+## ractive.unrender()
 ---
 
 Unrenders this Ractive instance, throwing away any DOM nodes associated with this instance. This is the counterpart to [`ractive.render()`](../API/Instance Methods.md#ractive.render()). The rest of the ractive instance is left intact, unlike [`ractive.teardown()`](../API/Instance Methods.md#ractive.teardown()).
@@ -1172,11 +1174,11 @@ Unrenders this Ractive instance, throwing away any DOM nodes associated with thi
 ```
 
 ---
-# ractive.unshift()
+## ractive.unshift()
 
-The Ractive equivalent to ```Array.unshift``` that prepends one or more elements to the array at the given [keypath](../Under The Hood/Templates/Keypaths.md) and triggers an update event.
+The Ractive equivalent to ```Array.unshift``` that prepends one or more elements to the array at the given [keypath](../Concepts/Templates/Keypaths.md) and triggers an update event.
 
-If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (is `undefined`), an empty array will be supplied instead. Otherwise, if the given [keypath](../Under The Hood/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
+If the given [keypath](../Concepts/Templates/Keypaths.md) does not exist (is `undefined`), an empty array will be supplied instead. Otherwise, if the given [keypath](../Concepts/Templates/Keypaths.md) does not resolve to an array, an error will be thrown.
 
 **Syntax**
 
@@ -1184,7 +1186,7 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the array to change, e.g. `list` or `order.items`.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) of the array to change, e.g. `list` or `order.items`.
 - `value (any)`: The value to prepend to the beginning of the array. One or more values may be supplied.
 
 **Returns**
@@ -1199,11 +1201,11 @@ If the given [keypath](../Under The Hood/Templates/Keypaths.md) does not exist (
 
 ---
 
-# ractive.update()
+## ractive.update()
 
-Forces everything that depends on the specified [keypaths](../Under The Hood/Templates/Keypaths.md) (whether directly or indirectly) to be 'dirty checked'. This is useful if you manipulate data without using the built in setter methods (i.e. `ractive.set()`, `ractive.animate()`, or array modification):
+Forces everything that depends on the specified [keypaths](../Concepts/Templates/Keypaths.md) (whether directly or indirectly) to be 'dirty checked'. This is useful if you manipulate data without using the built in setter methods (i.e. `ractive.set()`, `ractive.animate()`, or array modification):
 
-If no `keypath` is specified, all mustaches and [observers](../Under The Hood/Events/Publish-Subscribe.md) will be checked.
+If no `keypath` is specified, all mustaches and [observers](../Concepts/Events/Publish-Subscribe.md) will be checked.
 
 **Syntax**
 
@@ -1211,11 +1213,11 @@ If no `keypath` is specified, all mustaches and [observers](../Under The Hood/Ev
 
 **Arguments**
 
-- `[keypath] (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) to treat as 'dirty'. Any mustaches or [observers](../Under The Hood/Events/Publish-Subscribe.md) that depend (directly or indirectly) on this [keypath](../Under The Hood/Templates/Keypaths.md) will be checked to see if they need to update
+- `[keypath] (string)`: The [keypath](../Concepts/Templates/Keypaths.md) to treat as 'dirty'. Any mustaches or [observers](../Concepts/Events/Publish-Subscribe.md) that depend (directly or indirectly) on this [keypath](../Concepts/Templates/Keypaths.md) will be checked to see if they need to update
 
 **Returns**
 
-- `(Promise)`: A promise. If a [keypath](../Under The Hood/Templates/Keypaths.md) is not supplied, this 'dirty checks' everything.
+- `(Promise)`: A promise. If a [keypath](../Concepts/Templates/Keypaths.md) is not supplied, this 'dirty checks' everything.
 
 **Examples**
 
@@ -1225,14 +1227,14 @@ ractive.observe( 'foo', function ( foo ) {
 });
 
 model.foo = 'changed';
-ractive.update( 'foo' ); // causes [observer](../Under The Hood/Events/Publish-Subscribe.md) to alert 'changed'
+ractive.update( 'foo' ); // causes [observer](../Concepts/Events/Publish-Subscribe.md) to alert 'changed'
 ```
 
 ---
 
-# ractive.updateModel()
+## ractive.updateModel()
 
-If you programmatically manipulate inputs and other elements that have [two‐way binding](../Under The Hood/Data Binding/Two-Way Binding.md) set up, your model can get out of sync. In these cases, we need to force a resync with `ractive.updateModel()`:
+If you programmatically manipulate inputs and other elements that have [two‐way binding](../Concepts/Data Binding/Two-Way Binding.md) set up, your model can get out of sync. In these cases, we need to force a resync with `ractive.updateModel()`:
 
 **Syntax**
 
@@ -1240,7 +1242,7 @@ If you programmatically manipulate inputs and other elements that have [two‐wa
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) to treat as 'dirty'. Any two-way bindings linked to this [keypath](../Under The Hood/Templates/Keypaths.md) will be checked to see if the model is out of date
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) to treat as 'dirty'. Any two-way bindings linked to this [keypath](../Concepts/Templates/Keypaths.md) will be checked to see if the model is out of date
 - `cascade (boolean)`: If true, bindings that are *downstream* of `keypath` will also be checked - e.g. `ractive.updateModel( 'items', true )` would check `items.0.foo` and `items.1.foo` and so on. Defaults to `false`.
 
 **Returns**

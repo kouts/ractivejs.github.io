@@ -1,6 +1,12 @@
-# Getting Started
+# Ractive.js
 
 Welcome! These pages aim tso provide all the information you need to master Ractive.
+
+## Philosophy
+
+Ractive takes care of your UI and your application state. But if you're building a complex app, you'll likely have other things in the mix. Routing, history management, server communication, data validation, realtime communication, user authentication, and all that fun stuff.
+
+Unlike other frameworks, Ractive doesn't have an opinion about these things. You are encouraged to build your app from small, loosely coupled modules. It means you're not locked-in writing code for a particular framework The Right Way™. Should you hate one of your modules for some reason, you can easily swap it out for another and move on with life.
 
 ## Download
 
@@ -14,13 +20,13 @@ https://unpkg.com/ractive
 https://cdnjs.com/libraries/ractive
 
 // npm
-$ npm install --save-dev ractive
+npm install --save-dev ractive
 
 // Bower
-$ bower install --save ractive
+bower install --save ractive
 ```
 
-## Basic Usage
+## Usage
 
 Using Ractive is very simple. Create a new instance using `new Ractive({...})` with the desired options.
 
@@ -37,13 +43,7 @@ var ractive = new Ractive({
 
 While there are _no required options_, `el`, `template` and `data` are the most common. They specify _what element_ to attach an instance with _this markup_ having _this data_. Check out [Initialization Options](API/Initialization Options.md) to learn more about the available options.
 
-If you get stuck at any point, visit the [Get Support](Support.md) page for places to find help.
-
-## Philosophy
-
-Ractive takes care of your UI and your application state. But if you're building a complex app, you'll likely have other things in the mix. Routing, history management, server communication, data validation, realtime communication, user authentication, and all that fun stuff.
-
-Unlike other frameworks, Ractive doesn't have an opinion about these things. You are encouraged to build your app from small, loosely coupled modules. It means you're not locked-in writing code for a particular framework The Right Way™. Should you hate one of your modules for some reason, you can easily swap it out for another and move on with life.
+If you get stuck at any point, visit the [Get Support](Get Started/Support.md) page for places to find help.
 
 ---
 

@@ -1,6 +1,8 @@
+# Transitions
+
 Transitions allow you to control how enter the DOM and how they leave the DOM. This allows you to define intro and outro behavior, particularly animations, when elements go in and out of the page.
 
-# Writing transitions
+## Writing
 
 ```js
 Ractive.transitions.myTransition = function ( t, params ) {
@@ -19,7 +21,7 @@ Transitions are expected to be asynchronous. In order to signal Ractive that a t
 
 Note that transitions control the element's arrival and departure to the page. That means upon completion, any styling done to the element will be removed automatically.
 
-# Registering transitions
+## Registering
 
 Like other plugins, there's 3 ways you can register transitions:
 
@@ -49,7 +51,7 @@ const ractive = new Ractive({
 });
 ```
 
-# Using transitions
+## Using
 
 Transitions are added to an element via a transition directive. The directive starts with the transition name followed by one or more suffixes. The transition may be intro-only (upon rendering) using the suffix `-in`, outro-only (upon removal) using the suffix `-out`, or both using the suffix `-in-out`.
 
@@ -67,7 +69,7 @@ To pass arguments to the transition, simply provide an expression as the directi
 <div myTransition-in-out="{ /*params */ }">Intro and outro</div>
 ```
 
-# Examples
+## Examples
 
 The following example demonstrates a "flash" transition which colors the element green upon attachment, and red prior to removal.
 

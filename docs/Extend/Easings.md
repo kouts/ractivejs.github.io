@@ -1,6 +1,8 @@
+# Easings
+
 Easing functions are used by `ractive.animate` and some transitions. They describe the animation's progression from start to finish.
 
-# Writing easing functions
+## Writing
 
 ```js
 Ractive.easing.MyEasingFunction = function ( x ) {
@@ -11,7 +13,7 @@ Ractive.easing.MyEasingFunction = function ( x ) {
 
 Easing functions are simply functions that accept one argument, a numeric value `x` between 0 and 1 representing progress along a timeline. The function must return a numeric `y` value to represent its progression.
 
-# Registering easing functions
+## Registering
 
 Like other plugins, there's 3 ways you can register an easing function:
 
@@ -41,9 +43,9 @@ const ractive = new Ractive({
 });
 ```
 
-# Using easing functions
+## Using
 
-Easing functions don't work alone. They are utilized by [ractive.animate()](../API/Instance Methods.md#ractive.animate()) and [Transitions](../Plugin Authoring/Transitions.md) to dictate animations.
+Easing functions don't work alone. They are utilized by [ractive.animate()](../API/Instance Methods.md#ractive.animate()) and [Transitions](../Extend/Transitions.md) to dictate animations.
 
 ```js
 ractive.animate('foo.bar', 1, {
@@ -51,7 +53,7 @@ ractive.animate('foo.bar', 1, {
 });
 ```
 
-# Examples
+## Examples
 
 Here's an `elastic` easing function taken from [danro](https://github.com/danro)'s excellent [easing.js](https://github.com/danro/easing-js/blob/master/easing.js) library.
 

@@ -1,6 +1,8 @@
+# Partials
+
 A partial is a template snippet which can be reused in templates or in other partials. They help to keep templates uncluttered, non-repetetive and easy to read.
 
-# Writing partials
+## Writing
 
 ```html
 Ractive.partials.myPartial = '<!-- template -->';
@@ -8,7 +10,7 @@ Ractive.partials.myPartial = '<!-- template -->';
 
 Partials are simply Ractive templates.
 
-# Registering partials
+## Registering
 
 Unlike other plugins, partials have more than 3 registration options.
 
@@ -54,7 +56,7 @@ An inline partial, using the `{{#partial}}` mustache. Availability depends on wh
 {{/}}
 ```
 
-# Using partials
+## Using
 
 Partials can be used using the `{{>partialName}}` syntax. Partials work where any template would work. It works as if the partial template is manually put into where the partial mustache is positioned.
 
@@ -68,13 +70,13 @@ Partials can be used using the `{{>partialName}}` syntax. Partials work where an
 </div>
 ```
 
-## Valid names
+### Valid names
 
 Partials may be named with the same rules as any other identifier in Ractive or JavaScript, but since there isn't much danger of trying to do math in a partial name, they enjoy relaxed naming requirements that allow otherwise reserved globals and keywords to be used for partial names.
 
 Partial names may also contain `-` characters as long as they are surrounded by other valid characters e.g. `some-partial-template`.
 
-## Partial context
+### Partial context
 
 By default, a partial's context is the context of wherever it is positioned.
 
@@ -120,7 +122,7 @@ In the following example, the current item's `foo.bar` path is aliased with `ite
 {{/}}
 ```
 
-## Recursive partials
+### Recursive partials
 
 Partials can be used recursively. A common use case for this is when reusing partials on a tree-like structure, like a directory listing.
 
@@ -177,7 +179,7 @@ In the example above, subfolders use the `{{>folder}}` partial, which uses the `
 
 Beware of cyclical data structures! Ractive makes no attempt to detect cyclicality, and will happily continue rendering partials until the [Big Crunch](http://en.wikipedia.org/wiki/Big_Crunch) (or your browser exceeds its maximum call stack size. Whichever is sooner).
 
-## Injecting partials
+### Injecting partials
 
 One good use of partials is to vary the shape of a template according to some condition, the same way you might use [dependency injection](http://en.wikipedia.org/wiki/Dependency_injection) elsewhere in your code.
 
@@ -208,7 +210,7 @@ ractive = new Ractive({
 });
 ```
 
-Or you might make it possible to [extend](../Plugin Authoring/Components.md) a subclass without overriding its template:
+Or you might make it possible to [extend](../Extend/Components.md) a subclass without overriding its template:
 
 ```html
 <div class='modal-background'>
@@ -257,7 +259,7 @@ helloModal.on( 'close', function () {
 });
 ```
 
-## Partial expressions
+### Partial expressions
 
 Expressions can also be used to reference a partial instead of fixed partial names. Ractive will evaluate the expression and use its return value to select a partial. This is useful when you want the data to indicate what type of partial it should render with.
 
@@ -329,7 +331,7 @@ new Ractive({
 });
 ```
 
-## Updating Partials
+### Updating Partials
 
 Partials may be reset after they are rendered using [`ractive.resetPartial()`](../API/Instance Methods.md#ractive.resetPartial()). A reset partial will update everywhere it is referenced, so if it is used multiple times or inherited by a component, those instances will be updated as well. If a component has a partial with the same name as a parent partial, partial resets will not affect it since it is a different partial.
 
@@ -345,7 +347,7 @@ ractive.set('toggle', true);
 ractive.set('toggle', false);
 ```
 
-# Examples
+## Examples
 
 Here's an example of a gallery using a partial for its thumbnail information:
 

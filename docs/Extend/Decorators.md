@@ -1,6 +1,8 @@
+# Decorators
+
 A decorator is a simple way to add behaviour to a node when it is rendered, or to augment it in some way. Decorators are a good way to integrate DOM manipulation libraries with Ractive, such as [jQuery UI](http://jqueryui.com/) or [Bootstrap](https://getbootstrap.com/).
 
-# Writing decorators
+## Writing
 
 ```js
 function MyDecorator(node[, ...args]) {
@@ -28,7 +30,7 @@ Decorators are simply functions that are called upon to setup the decorator once
 
 Any updates to the arguments will call the decorator's `teardown` and run the decorator function again, essentially setting up the decorator again. If an `update` function is provided on the return object, that will be called instead of the `teardown` and setup function.
 
-# Registering decorators
+## Registering
 
 Like other plugins, there's 3 ways you can register decorators:
 
@@ -58,7 +60,7 @@ const ractive = new Ractive({
 });
 ```
 
-# Using decorators
+## Using
 
 You can invoke one or more decorators on your elements by using a decorator directive. Arguments are optional. Argument-less decorators can simply use the directive without value. Decorators with arguments take a comma-separated set of expressions that resolve to the element's context.
 
@@ -70,7 +72,7 @@ You can invoke one or more decorators on your elements by using a decorator dire
 <div as-mydecorator="arg1, .some.other.arg2, 10 * @index" as-somethingElseToo>...</div>
 ```
 
-# Examples
+## Examples
 
 The following example builds a decorator that updates the time.
 

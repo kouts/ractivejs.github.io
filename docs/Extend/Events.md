@@ -1,6 +1,8 @@
+# Events
+
 Events allow custom-named events on DOM elements. Common use cases for custom DOM events include normalizing cross-browser events, normalizing cross-device events, implementing custom events, and so much more.
 
-# Writing events
+## Writing
 
 ```js
 Ractive.events.MyEvent = function(node, fire){
@@ -23,7 +25,7 @@ The event object will be augmented with `context`, `keypath` and `index` propert
 
 `teardown` is a function that gets called once the element is torn down. This allows the event to clean up after itself.
 
-# Registering events
+## Registering
 
 Like other plugins, there's 3 ways you can register events:
 
@@ -53,7 +55,7 @@ const ractive = new Ractive({
 });
 ```
 
-# Using events
+## Using
 
 Events use the same `on-*` attribute syntax as component and DOM events. When Ractive encounters an `on-*` attribute on a DOM element, it looks for a registered event and applies it on the element. If no matching event name was found, Ractive will think the event name is a native DOM event and will attach one accordingly.
 
@@ -63,7 +65,7 @@ Events use the same `on-*` attribute syntax as component and DOM events. When Ra
 <span on-myevent="foo()">Click me!</span>
 ```
 
-# Examples
+## Examples
 
 Here's an example of a "long press" event which fires when the mouse is clicked and held for 1 second.
 

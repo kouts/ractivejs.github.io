@@ -1,13 +1,28 @@
 site_name: Ractive
+site_url: https://ractive.js.org
+repo_url: https://github.com/ractivejs/ractive
+site_description: Next-generation DOM manipulation
+site_author: RactiveJS contributors
+copyright: © RactiveJS contributors
+remote_branch: master
+strict: false
 theme: cinder
 pages:
   - Get Started:
-    - Basic Usage: index.md
+    - Introduction: index.md
     - Examples:
+      - Animated Chart: Get Started/Examples/Chart.md
       - Clock: Get Started/Examples/Clock.md
-    - Debug: Get Started/Debug.md
+      - Comments: Get Started/Examples/Comments.md
+      - Components: Get Started/Examples/Components.md
+      - Illustration: Get Started/Examples/Illustration.md
+      - Infinite Scroll: Get Started/Examples/Infinite Scroll.md
+      - Backbone: Get Started/Examples/Backbone.md
+      - Ratings: Get Started/Examples/Ratings.md
+      - Todos: Get Started/Examples/Todos.md
+    - Debugging: Get Started/Debugging.md
     - Support: Get Started/Support.md
-    - Contribute: Get Started/Contribute.md
+    - Contributing: Get Started/Contributing.md
   - API:
     - Initialization Options: API/Initialization Options.md
     - Static Properties: API/Static Properties.md
@@ -23,15 +38,15 @@ pages:
     - Plugins: Integrations/Plugins.md
     - Tools: Integrations/Tools.md
     - Libraries: Integrations/Libraries.md
-  - Plugin Authoring:
-    - Adaptors: Plugin Authoring/Adaptors.md
-    - Components: Plugin Authoring/Components.md
-    - Decorators: Plugin Authoring/Decorators.md
-    - Easings: Plugin Authoring/Easings.md
-    - Events: Plugin Authoring/Events.md
-    - Interpolators: Plugin Authoring/Interpolators.md
-    - Partials: Plugin Authoring/Partials.md
-    - Transitions: Plugin Authoring/Transitions.md
+  - Extend:
+    - Adaptors: Extend/Adaptors.md
+    - Components: Extend/Components.md
+    - Decorators: Extend/Decorators.md
+    - Easings: Extend/Easings.md
+    - Events: Extend/Events.md
+    - Interpolators: Extend/Interpolators.md
+    - Partials: Extend/Partials.md
+    - Transitions: Extend/Transitions.md
   - Concepts:
     - Architecture:
       - Overview: Concepts/Architecture/Overview.md

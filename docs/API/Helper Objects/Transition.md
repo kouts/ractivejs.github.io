@@ -1,3 +1,5 @@
+# Transition
+
 The transition object is an object you receive when writing transitions. It has a few properties and methods designed to make creating transitions easier.
 
 ---

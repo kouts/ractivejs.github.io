@@ -1,3 +1,5 @@
+# Initialization Options
+
 The following is an exhaustive list of initialisation options that you can pass to `new Ractive(options)` and `Ractive.extend(options)`, with full descriptions grouped below by category.
 
 Note that any additional options set that's not part of the[initialization options](../API/Initialization Options.md)will be added as properties of the instance.
@@ -14,13 +16,13 @@ ractive.myMethod(); // triggers the alert
 
 ---
 
-# adapt
+## adapt
 
 _`(Array<string|Object>)`_
 
-Custom wrappers to be used with all or part of the supplied data, see [Adaptors](../Plugin Authoring/Adaptors.md). Unlike components or other registries where there is a template-level directive that informs Ractive that plugin is to be used, [adaptors](../Plugin Authoring/Adaptors.md) are a data-level construct and so you use the `adapt` option to tell Ractive which [adaptors](../Plugin Authoring/Adaptors.md) are to be used with that instance. If you define the [adaptors](../Plugin Authoring/Adaptors.md) directly on the instance or component, you do not need to specify them in the `adapt` option.
+Custom wrappers to be used with all or part of the supplied data, see [Adaptors](../Extend/Adaptors.md). Unlike components or other registries where there is a template-level directive that informs Ractive that plugin is to be used, [adaptors](../Extend/Adaptors.md) are a data-level construct and so you use the `adapt` option to tell Ractive which [adaptors](../Extend/Adaptors.md) are to be used with that instance. If you define the [adaptors](../Extend/Adaptors.md) directly on the instance or component, you do not need to specify them in the `adapt` option.
 
-Can either be the [adaptor](../Plugin Authoring/Adaptors.md) itself, or the name of an [adaptor](../Plugin Authoring/Adaptors.md) registred via `Ractive.adaptors`:
+Can either be the [adaptor](../Extend/Adaptors.md) itself, or the name of an [adaptor](../Extend/Adaptors.md) registred via `Ractive.adaptors`:
 
 ```js
 Ractive.adaptors.myAdaptor = MyAdaptor1;
@@ -32,12 +34,12 @@ new Ractive({
 
 ---
 
-# adaptors
+## adaptors
 
 _`(Object<string, Object>)`_
 
-A key-value hash of [adaptors](../Plugin Authoring/Adaptors.md) that are specific to this instance. Usually the `adapt` property can directly specify which adaptors
-to use on this instance and the `adaptors` property is used to register an [adaptor](../Plugin Authoring/Adaptors.md) on components or `Ractive.adaptors`.
+A key-value hash of [adaptors](../Extend/Adaptors.md) that are specific to this instance. Usually the `adapt` property can directly specify which adaptors
+to use on this instance and the `adaptors` property is used to register an [adaptor](../Extend/Adaptors.md) on components or `Ractive.adaptors`.
 
 ```js
 adaptors: {
@@ -47,7 +49,7 @@ adaptors: {
 
 ---
 
-# append
+## append
 
 _`(boolean|string|HTMLElement|array-like)`_
 
@@ -115,11 +117,11 @@ template: '<p>grey</p>'
 
 ---
 
-# components
+## components
 
 _`(Object<string, Function>)`_
 
-A map of [components](../Plugin Authoring/Components.md) where the `key` is the name of the component the `value` is either a component definition or a function that returns either a globally registered component name or a component definition.
+A map of [components](../Extend/Components.md) where the `key` is the name of the component the `value` is either a component definition or a function that returns either a globally registered component name or a component definition.
 
 ```js
 components: {
@@ -139,7 +141,7 @@ During a [`ractive.reset()`](../API/Instance Methods.md#ractive.reset()), functi
 
 ---
 
-# computed
+## computed
 
 _`(Object<string, function|Object>)`_
 
@@ -151,11 +153,11 @@ computed: {
 }
 ```
 
-See [Computed Properties](../Under The Hood/Data Binding/Computed Properties.md) for more information and examples .
+See [Computed Properties](../Concepts/Data Binding/Computed Properties.md) for more information and examples .
 
 ---
 
-# csp
+## csp
 
 _`(boolean)`_
 
@@ -163,7 +165,7 @@ Defaults to `false`. Whether or not to add inline functions for expressions afte
 
 ---
 
-# css
+## css
 
 _`(string)`_
 
@@ -171,7 +173,7 @@ Used on components to specify `css` styles to be inserted into the document.
 
 ---
 
-# data
+## data
 
 _`(Object<string, any>|Function)`_
 
@@ -282,15 +284,15 @@ var r = new MyComponent({
 })
 ```
 
-For more advanced data modelling and backends, use [Adaptors](../Plugin Authoring/Adaptors.md).
+For more advanced data modelling and backends, use [Adaptors](../Extend/Adaptors.md).
 
 ---
 
-# decorators
+## decorators
 
 _`(Object<string, Function>)`_
 
-A key-value hash of decorators that are specific to this instance, where `key` is the name of the decorator (as referenced within templates as `<div decorator="myDecorator"></div>`), and `value` is a is a decorator functions.  See [Decorators](../Plugin Authoring/Decorators.md) for more info.
+A key-value hash of decorators that are specific to this instance, where `key` is the name of the decorator (as referenced within templates as `<div decorator="myDecorator"></div>`), and `value` is a is a decorator functions.  See [Decorators](../Extend/Decorators.md) for more info.
 
 ```js
 decorators: {
@@ -300,7 +302,7 @@ decorators: {
 
 ---
 
-# delimiters
+## delimiters
 
 _`(Array[string])`_
 
@@ -317,7 +319,7 @@ hello earth
 
 ---
 
-# easing
+## easing
 
 _`(Object<string, Function>)`_
 
@@ -325,7 +327,7 @@ A key-value hash of easing function. See [`Ractive.easing()`]\(../API/Static Met
 
 ---
 
-# el
+## el
 
 _`(string|HTMLElement|array-like)`_
 
@@ -342,7 +344,7 @@ el: $('#container')
 
 ---
 
-# enhance
+## enhance
 
 _`(boolean)`_
 
@@ -358,11 +360,11 @@ TODO: Simplify/restructure
 
 ---
 
-# events
+## events
 
 _`(Object<string, Function>)`_
 
-A key-value hash of [event plugins](../Plugin Authoring/Events.md) that are specific to this instance, where `key` is the name of the event (as referenced within templates as `<button on-mycustomevent="fire"></button>`), and `value` is the custom event plugin functions.  See [Writing Events](../Plugin Authoring/Events.md) for more info.
+A key-value hash of [event plugins](../Extend/Events.md) that are specific to this instance, where `key` is the name of the event (as referenced within templates as `<button on-mycustomevent="fire"></button>`), and `value` is the custom event plugin functions.  See [Writing Events](../Extend/Events.md) for more info.
 
 ```js
 events: {
@@ -372,7 +374,7 @@ events: {
 
 ---
 
-# interpolators
+## interpolators
 
 _`(Object<string, Function>)`_
 
@@ -380,15 +382,15 @@ A key-value hash of interpolators use by [`ractive.animate()`](../API/Instance M
 
 ---
 
-# isolated
+## isolated
 
 _`(boolean)`_
 
-Defaults to `false`. This option is typically only relevant as an extension option for [Components](../Plugin Authoring/Components.md). Controls whether the component will look outside itself for data and registry items.
+Defaults to `false`. This option is typically only relevant as an extension option for [Components](../Extend/Components.md). Controls whether the component will look outside itself for data and registry items.
 
 ---
 
-# lazy
+## lazy
 
 _`(boolean)`_
 
@@ -410,11 +412,11 @@ ractive.on('change', function(){
 
 ---
 
-# magic
+## magic
 
 _`(boolean)`_
 
-Defaults to `false`. Whether or not to wrap data in ES5 accessors for automatic binding (see [Magic Mode](../Under The Hood/Data Binding/Magic Mode.md)).
+Defaults to `false`. Whether or not to wrap data in ES5 accessors for automatic binding (see [Magic Mode](../Concepts/Data Binding/Magic Mode.md)).
 
 ```js
 var data = { foo: 'bar' };
@@ -425,11 +427,11 @@ data.foo = 'fizz'
 
 ---
 
-# modifyArrays
+## modifyArrays
 
 _`(boolean)`_
 
-Defaults to `false`. Whether or not to modify array mutator methods to enable frictionless data binding with lists (see [Array Modification](../Under The Hood/Data Binding/Array Modification.md)).
+Defaults to `false`. Whether or not to modify array mutator methods to enable frictionless data binding with lists (see [Array Modification](../Concepts/Data Binding/Array Modification.md)).
 
 ```js
 var items = [ 'red', 'blue' ];
@@ -444,7 +446,7 @@ items.push( 'green' );
 
 ---
 
-# noCSSTransform
+## noCSSTransform
 
 _`(boolean)`_
 
@@ -452,7 +454,7 @@ Defaults to `false`. Prevents component css from being transformed with scoping 
 
 ---
 
-# noIntro
+## noIntro
 
 _`(boolean)`_
 
@@ -473,17 +475,17 @@ ractive.get('items').push( 'green' );
 
 ---
 
-# onchange
+## onchange
 
 _`(Function)`_
 
 A lifecycle event that is called when data owned by the instance changes.
 
-Accepts an map whose keys are the [keypaths](../Under The Hood/Templates/Keypaths.md) that changed and whose values are the new values for that keypath.
+Accepts an map whose keys are the [keypaths](../Concepts/Templates/Keypaths.md) that changed and whose values are the new values for that keypath.
 
 ---
 
-# oncomplete
+## oncomplete
 
 _`(Function)`_
 
@@ -491,7 +493,7 @@ A lifecycle event that is called when the instance is rendered _and_ all the tra
 
 ---
 
-# onconfig
+## onconfig
 
 _`(Function)`_
 
@@ -499,7 +501,7 @@ A lifecycle event that is called when an instance is constructed and all configu
 
 ---
 
-# onconstruct
+## onconstruct
 
 _`(Function)`_
 
@@ -509,7 +511,7 @@ Accepts the[initialization options](../API/Initialization Options.md)as argument
 
 ---
 
-# ondetach
+## ondetach
 
 _`(Function)`_
 
@@ -519,7 +521,7 @@ Note that `ractive.insert()` implicitly calls `ractive.detach()` if needed.
 
 ---
 
-# oninit
+## oninit
 
 _`(Function)`_
 
@@ -527,7 +529,7 @@ A lifecycle event that is called when an instance is constructed and is ready to
 
 ---
 
-# oninsert
+## oninsert
 
 _`(Function)`_
 
@@ -535,7 +537,7 @@ A lifecycle event that is called when `ractive.insert()` is called.
 
 ---
 
-# onrender
+## onrender
 
 _`(Function)`_
 
@@ -543,7 +545,7 @@ A lifecycle event that is called when the instance is rendered and _before_ tran
 
 ---
 
-# onteardown
+## onteardown
 
 _`(Function)`_
 
@@ -551,7 +553,7 @@ A lifecycle event that is called when the instance is being torn down.
 
 ---
 
-# onunrender
+## onunrender
 
 _`(Function)`_
 
@@ -559,7 +561,7 @@ A lifecycle event that is called when the instance is being undrendered.
 
 ---
 
-# onupdate
+## onupdate
 
 _`(Function)`_
 
@@ -567,11 +569,11 @@ A lifecycle event that is called when `ractive.update()` is called.
 
 ---
 
-# partials
+## partials
 
 _`(Object<string, string|Object|Function>)`_
 
-A map of [partials](../Plugin Authoring/Partials.md) where the key is the name of the partial, and the value is either a template string, an parsed template object or a function that returns any of the previous options.
+A map of [partials](../Extend/Partials.md) where the key is the name of the partial, and the value is either a template string, an parsed template object or a function that returns any of the previous options.
 
 ```js
 partials: {
@@ -583,13 +585,13 @@ partials: {
 }
 ```
 
-If you need to do additional post-processing on the partials, the function option receives post-processed data and a [Parse Object](../Helper Objects/Parse Object.md) that provides helper methods for template manipulation.
+If you need to do additional post-processing on the partials, the function option receives post-processed data and a [Parse Object](Helper Objects/Parse.md) that provides helper methods for template manipulation.
 
 During a [`ractive.reset()`](../API/Instance Methods.md#ractive.reset()), function partials will be re-evaluated. If the return value changes, the Ractive instance will be re-rendered.
 
 ---
 
-# preserveWhitespace
+## preserveWhitespace
 
 _`(boolean)`_
 
@@ -617,7 +619,7 @@ Please note that the browser will still deal with whitespace in the normal fashi
 
 ---
 
-# sanitize
+## sanitize
 
 _`(boolean|Object)`_
 
@@ -646,7 +648,7 @@ sanitize: {
 
 ---
 
-# staticDelimiters
+## staticDelimiters
 
 _`(Array[string])`_
 
@@ -666,7 +668,7 @@ ractive.set( 'foo', 'mars' );
 
 ---
 
-# staticTripleDelimiters
+## staticTripleDelimiters
 
 _`(Array<string>)`_
 
@@ -686,7 +688,7 @@ ractive.set( 'html', '<span>mars</span>' );
 
 ---
 
-# stripComments
+## stripComments
 
 _`(boolean)`_
 
@@ -702,11 +704,11 @@ stripComments: false
 
 ---
 
-# template
+## template
 
 _`(string|array|object|function)`_
 
-The [template](../Under The Hood/Templates/Templates.md) to use. Must either be a CSS selector string pointing to an element on the page containing the template, an HTML string, an object resulting from [`Ractive.parse()`]\(../API/Static Methods.md#Ractive.parse()) or a function that returns any of the previous options.
+The [template](../Concepts/Templates/Overview.md) to use. Must either be a CSS selector string pointing to an element on the page containing the template, an HTML string, an object resulting from [`Ractive.parse()`]\(../API/Static Methods.md#Ractive.parse()) or a function that returns any of the previous options.
 
 ```js
 // Selector
@@ -724,17 +726,17 @@ template: function(data, p){
 },
 ```
 
-If you need to do additional post-processing on templates, the function option receives the post-processed data and a [Parse Object](../Helper Objects/Parse Object.md) that provides helper methods for template manipulation.
+If you need to do additional post-processing on templates, the function option receives the post-processed data and a [Parse Object](Helper Objects/Parse.md) that provides helper methods for template manipulation.
 
 During a [`ractive.reset()`](../API/Instance Methods.md#ractive.reset()), function templates will be re-evaluated. If the return value changes, the Ractive instance will be re-rendered.
 
 ---
 
-# transitions
+## transitions
 
 _`(Object<string, Function>)`_
 
-A key-value hash of transitions that are specific to this instance. The `key` is referenced within templates using `intro` and `outro` attributes on elements, and `value` is a transition functions, see [Transitions](../Plugin Authoring/Transitions.md) for more info.
+A key-value hash of transitions that are specific to this instance. The `key` is referenced within templates using `intro` and `outro` attributes on elements, and `value` is a transition functions, see [Transitions](../Extend/Transitions.md) for more info.
 
 ```js
 template: '<p intro="slide" outro="slide">hello world</p>',
@@ -745,7 +747,7 @@ transitions: {
 
 ---
 
-# transitionsEnabled
+## transitionsEnabled
 
 _`(boolean)`_
 
@@ -753,7 +755,7 @@ Defaults to `true`. Whether or not transitions are enabled for this instance.
 
 ---
 
-# tripleDelimiters
+## tripleDelimiters
 
 _`(Array[string])`_
 
@@ -770,11 +772,11 @@ hello <span>world</span>
 
 ---
 
-# twoway
+## twoway
 
 _`(boolean)`_
 
-Defaults to `true`. Whether or not two-way data binding is enabled (see [Two-Way Binding](../Under The Hood/Data Binding/Two-Way Binding.md)).
+Defaults to `true`. Whether or not two-way data binding is enabled (see [Two-Way Binding](../Concepts/Data Binding/Two-Way Binding.md)).
 
 ```js
 var ractive = new Ractive({

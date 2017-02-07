@@ -1,6 +1,8 @@
+# Components
+
 In many situations, you want to encapsulate behaviour and markup into a single reusable *component*, which can be dropped into Ractive applications.
 
-# Writing components
+## Writing
 
 ```js
 Ractive.components.MyComponent = Ractive.extend({ ... });
@@ -33,7 +35,7 @@ const MyComponentSubclass = MyComponent.extend({
 });
 ```
 
-# Registering components
+## Registering
 
 Like other plugins, there's 3 ways you can register components:
 
@@ -66,7 +68,7 @@ const ractive = new Ractive({
 });
 ```
 
-# Using components
+## Using
 
 Components are simply subclasses of Ractive, which means the are instatiable via the `new` keyword.
 
@@ -105,9 +107,9 @@ const AnotherComponent = Ractive.extend({
 });
 ```
 
-# Isolation
+### Isolation
 
-A unique behavior in Ractive is [the resolver's ability to "climb" up the data context](../Under The Hood/Templates/References.md) if a [keypath](../Under The Hood/Templates/Keypaths.md) doesn't resolve in the current data context. It takes this behavior a step further and also climbs to the parent component's data context if it does not resolve on the child data context.
+A unique behavior in Ractive is [the resolver's ability to "climb" up the data context](../Concepts/Templates/References.md) if a [keypath](../Concepts/Templates/Keypaths.md) doesn't resolve in the current data context. It takes this behavior a step further and also climbs to the parent component's data context if it does not resolve on the child data context.
 
 In the following example, the instance of `ChildComponent` prints "Hello World!" even when the data is set on the outer-most instance. The resolver "climbed up" to the outer-most instance to resolve `message`.
 
@@ -162,7 +164,7 @@ const ractive = new Ractive({
 ractive.set('message', 'Hello World!');
 ```
 
-# Binding
+### Binding
 
 Bindings connect a piece of data on the parent instance to data on the child instance. Changes on one side will reflect on the other. The syntax is similar to how one would write HTML element attributes.
 
@@ -183,7 +185,7 @@ const ractive = new Ractive({
 ractive.set('text', 'Hello World!');
 ```
 
-## Data context
+### Data context
 
 Each component instance comes with its own data context so that parameters don't pollute the primary data. Bindings will still update across both contexts.
 
@@ -218,7 +220,7 @@ ractive.get(); // {"colors":["red","green","blue"], "name":"Colors"}
 widget.get();  // {"shades":["red","green","blue"], "option1":"A"}
 ```
 
-# Events
+### Events
 
 Components can fire events like regular elements using [ractive.fire()](../API/Instance Methods.md#ractive.fire()). Enclosing instances can listen for events using the same `on-*` event notation. There are two ways to handle component events.
 
@@ -268,7 +270,7 @@ Ractive.components.ParentComponent = Ractive.extend({
 });
 ```
 
-## Bubbling
+### Bubbling
 
 Events fired from within components will also "bubble" up the component hierarchy with their component name attached as a namespace. This can be used to avoid having to re-fire events at each level in a deeply nested component hierarchy.
 
@@ -376,7 +378,7 @@ ractive.on('ChildComponent2.sameevent', function(){
 });
 ```
 
-## Stopping propagation
+### Stopping propagation
 
 In order to stop bubbling, simply return `false` from an event handler. Should the event come from a DOM event, it will call `stopPropagation()` and `preventDefault()` automatically.
 
@@ -470,11 +472,7 @@ ractive.on('ChildComponent.childevent3', function() {
 });
 ```
 
-# Transclusion
-
-The inner HTML of a component (the content between the opening and closing tags of the component) is exposed to the component template by two special mustaches: `{{> content }}` and `{{ yield }}`. They're similar in a sense that they render the inner HTML of the component wherever they are positioned. However, that's where the similarities end.
-
-## {{>content}}
+### {{>content}}
 
 `{{>content}}` renders the inner HTML in the context of the component. Partials, components, and any other valid template items can be used as inner HTML. `{{>content}}` can be thought of as a special partial.
 
@@ -537,7 +535,7 @@ const ractive = new Ractive({
 });
 ```
 
-## {{yield}}
+### {{yield}}
 
 `{{yield}}` renders the inner HTML in the context of the parent component. Partials, components, and any other valid template items can be used as inner HTML. A common use case of `{{yield}}` is to provide wrapper markup transparently.
 
@@ -595,4 +593,9 @@ const ractive = new Ractive({
     </div>
   `
 });
+```
+
+## Examples
+
+```
 ```

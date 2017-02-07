@@ -1,4 +1,6 @@
-# Getting in touch
+# Support
+
+## Getting in touch
 
 There are a lot of places to find help if you get stuck with Ractive:
 
@@ -7,7 +9,7 @@ There are a lot of places to find help if you get stuck with Ractive:
 * [GitHub](https://github.com/ractivejs/ractive/issues)
 * [Twitter](http://twitter.com/RactiveJS)
 
-# Legacy browsers
+## Legacy browsers
 
 The core Ractive library requires the following APIs to be present:
 
@@ -33,7 +35,7 @@ The core Ractive library requires the following APIs to be present:
 
 Most _modern_ browsers already support these APIs. Should you want to serve your app on older browsers, Ractive comes with an optional file containing these specific polyfills. That way, you can still enjoy the full Ractive experience without lugging in a huge polyfill library. Simply load it up before Ractive and pretend as if nothing happened.
 
-# SVGs
+## SVGs
 
 Ractive doesn't mind whether you're rendering HTML or SVG - it treats both the same way. Unfortunately, some browsers (notably IE8 and below, and Android 2.3 and below) *do* care.
 

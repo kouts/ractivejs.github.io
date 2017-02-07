@@ -1,4 +1,6 @@
-# Browserify
+# Tools
+
+## Browserify
 
 [Browserify](http://browserify.org/) is a way of using [node-style](http://nodejs.org/) requires in the browser, bundling your scripts into a single file for efficient deployment.
 
@@ -10,7 +12,7 @@ There are three Browserify transforms available that you can use for Ractive.js:
 
 A [starter project](https://github.com/alienscience/gulp-ractive-starter) is available for using Ractivate with [gulp.js](http://gulpjs.com/) build system.
 
-## Using plugins with Ractive and Browserify
+### Using plugins with Ractive and Browserify
 
 [Plugins](../Integrations/Plugins.md) typically include a Universal Module Definition (UMD) block that, in a node.js or Browserify environment, calls `require('ractive')`. If you want to be explicit about *which* version of Ractive gets loaded, you can do it when you configure browserify like so:
 
@@ -18,7 +20,7 @@ A [starter project](https://github.com/alienscience/gulp-ractive-starter) is ava
 browserify.require('./my-copy-of-ractive.js', { expose: 'ractive' });
 ```
 
-# RequireJS
+## RequireJS
 
 *Psst! Looking for the [Ractive + RequireJS sample application](https://github.com/RactiveJS/requirejs-ractive/tree/master/sample)?*
 
@@ -53,7 +55,7 @@ define([ 'jquery', 'Ractive' ], function ( $, Ractive ) {
 });
 ```
 
-## Loading templates without AJAX
+### Loading templates without AJAX
 
 We can do one better than that. Rather than stuffing our code full of asynchronous logic, we can use AMD to do the donkey work for us.
 
@@ -109,7 +111,7 @@ define([ 'Ractive', 'rv!templates/main' ], function ( Ractive, mainTemplate ) {
 });
 ```
 
-## Using the RequireJS optimiser
+### Using the RequireJS optimiser
 
 You might wonder why the third example is better than the second - after all, we've basically just added another middleman, right?
 
@@ -131,14 +133,14 @@ If you're *really* anal about performance, you can tweak things further still. W
 
 Getting to grips with AMD and RequireJS can be tricky at first, but it's worth the effort. Good luck!
 
-# Yeoman
+## Yeoman
 
 [Yeoman](http://yeoman.io/) is a tool for scaffolding webapps. [Jorge Colindres](http://colindres.me/) has created [generator-ractive](https://github.com/colindresj/generator-ractive), a Yeoman generator to quickly set up a Ractive application.
 
-# Rollup
+## Rollup
 
 TODO
 
-# Babel
+## Babel
 
 TODO

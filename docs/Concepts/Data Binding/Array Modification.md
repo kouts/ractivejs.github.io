@@ -1,4 +1,4 @@
-Ractive can intercept the *mutator methods* (`pop`, `push`, `shift`, `unshift`, `splice`, `sort` and `reverse`) of arrays that it [depends on](Dependants.md) for more convenient data binding.
+Ractive can intercept the *mutator methods* (`pop`, `push`, `shift`, `unshift`, `splice`, `sort` and `reverse`) of arrays that it [depends on](Dependents.md) for more convenient data binding.
 
 Consider the following:
 
@@ -58,6 +58,6 @@ In the first example, Ractive will see that the content of the first list item h
 
 In the second example, Ractive will understand that all it needs to do is insert `<li>z</li>` at the start of the list, leaving everything else untouched.
 
-This is particularly important if you're using [transitions](../../Plugin Authoring/Transitions.md), as it will be obvious to the user which elements are being added and removed.
+This is particularly important if you're using [transitions](../../Extend/Transitions.md), as it will be obvious to the user which elements are being added and removed.
 
 Note that if `list.unshift('z')` isn't an option, you could use [`ractive.merge()`](../../API/Instance Methods.md#ractive.merge()) to achieve the same effect.

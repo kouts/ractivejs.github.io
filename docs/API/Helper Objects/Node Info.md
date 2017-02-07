@@ -1,18 +1,20 @@
-The nodeinfo object is the type of object you receive when calling [Node Info](../Helper Objects/Node Info Object.md). This object contains various properties and methods that allow you to obtain information about the Ractive instance, the node associated with it and the context surrounding it.
+# Node Info
 
-Helper methods that take a [keypath](../Under The Hood/Templates/Keypaths.md) will resolve relative to that node's context. Special references, template aliases, and key and index aliases are supported.
+The nodeinfo object is the type of object you receive when calling [Node Info](Node Info.md). This object contains various properties and methods that allow you to obtain information about the Ractive instance, the node associated with it and the context surrounding it.
+
+Helper methods that take a [keypath](../../Concepts/Templates/Keypaths.md) will resolve relative to that node's context. Special references, template aliases, and key and index aliases are supported.
 
 ---
 
 ## nodeinfo.add()
 
-See [ractive.add()](../API/Instance Methods.md#ractive.add()).
+See [ractive.add()](../Instance Methods.md#ractive.add()).
 
 ---
 
 ## nodeinfo.animate()
 
-See [ractive.animate()](../API/Instance Methods.md#ractive.animate()).
+See [ractive.animate()](../Instance Methods.md#ractive.animate()).
 
 ---
 
@@ -26,7 +28,7 @@ The data context of the node.
 
 ## nodeinfo.get()
 
-See [ractive.get()](../API/Instance Methods.md#ractive.get()).
+See [ractive.get()](../Instance Methods.md#ractive.get()).
 
 ---
 
@@ -58,7 +60,7 @@ Ractive.getNodeInfo('#findMe').getBinding(); // returns value of foo.bar.baz
 
 ## nodeinfo.getBindingPath()
 
-Returns the [keypath](../Under The Hood/Templates/Keypaths.md) of the binding if the node represented by this info object has a two-way binding.
+Returns the [keypath](../../Concepts/Templates/Keypaths.md) of the binding if the node represented by this info object has a two-way binding.
 
 **Syntax**
 
@@ -66,11 +68,11 @@ Returns the [keypath](../Under The Hood/Templates/Keypaths.md) of the binding if
 
 **Arguments**
 
-- `[ractive] (Ractive)`: The instance to resolve the [keypath](../Under The Hood/Templates/Keypaths.md) against.
+- `[ractive] (Ractive)`: The instance to resolve the [keypath](../../Concepts/Templates/Keypaths.md) against.
 
 **Returns**
 
-- `(string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) of the node binding.
+- `(string)`: The [keypath](../../Concepts/Templates/Keypaths.md) of the node binding.
 
 **Examples**
 
@@ -128,19 +130,19 @@ Ractive.getNodeInfo('#bar').isBound(); // Returns false
 
 _`(string)`_
 
-The [keypath](../Under The Hood/Templates/Keypaths.md) to `context`.
+The [keypath](../../Concepts/Templates/Keypaths.md) to `context`.
 
 ---
 
 ## nodeinfo.link()
 
-See [ractive.link()](../API/Instance Methods.md#ractive.link()).
+See [ractive.link()](../Instance Methods.md#ractive.link()).
 
 ---
 
 ## nodeinfo.merge()
 
-See [ractive.merge()](../API/Instance Methods.md#ractive.merge()).
+See [ractive.merge()](../Instance Methods.md#ractive.merge()).
 
 ---
 
@@ -162,13 +164,13 @@ The original DOM event object. Normally present when the event is a Ractive DOM 
 
 ## nodeinfo.pop()
 
-See [ractive.pop()](../API/Instance Methods.md#ractive.pop()).
+See [ractive.pop()](../Instance Methods.md#ractive.pop()).
 
 ---
 
 ## nodeinfo.push()
 
-See [ractive.push()](../API/Instance Methods.md#ractive.push()).
+See [ractive.push()](../Instance Methods.md#ractive.push()).
 
 ---
 
@@ -182,7 +184,7 @@ This property holds a reference to the Ractive instance that controls the node r
 
 ## nodeinfo.resolve()
 
-Resolves the given [keypath](../Under The Hood/Templates/Keypaths.md) to a full keypath. If a Ractive instance is supplied, the resolved path will also account for any mappings defined for the instance.
+Resolves the given [keypath](../../Concepts/Templates/Keypaths.md) to a full keypath. If a Ractive instance is supplied, the resolved path will also account for any mappings defined for the instance.
 
 **Syntax**
 
@@ -190,8 +192,8 @@ Resolves the given [keypath](../Under The Hood/Templates/Keypaths.md) to a full 
 
 **Arguments**
 
-- `[keypath] (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) to resolve.
-- `[ractive] (Ractive)`: The instance to resolve the [keypath](../Under The Hood/Templates/Keypaths.md) against.
+- `[keypath] (string)`: The [keypath](../../Concepts/Templates/Keypaths.md) to resolve.
+- `[ractive] (Ractive)`: The instance to resolve the [keypath](../../Concepts/Templates/Keypaths.md) against.
 
 **Returns**
 
@@ -207,13 +209,13 @@ Resolves the given [keypath](../Under The Hood/Templates/Keypaths.md) to a full 
 
 ## nodeinfo.reverse()
 
-See [ractive.reverse()](../API/Instance Methods.md#ractive.reverse()).
+See [ractive.reverse()](../Instance Methods.md#ractive.reverse()).
 
 ---
 
 ## nodeinfo.set()
 
-See [ractive.set()](../API/Instance Methods.md#ractive.set()).
+See [ractive.set()](../Instance Methods.md#ractive.set()).
 
 ---
 
@@ -243,52 +245,52 @@ Sets the binding of the node represented by this info object to the specified va
 
 ## nodeinfo.shift()
 
-See [ractive.shift()](../API/Instance Methods.md#ractive.shift()).
+See [ractive.shift()](../Instance Methods.md#ractive.shift()).
 
 ---
 
 ## nodeinfo.splice()
 
-See [ractive.splice()](../API/Instance Methods.md#ractive.splice()).
+See [ractive.splice()](../Instance Methods.md#ractive.splice()).
 
 ---
 
 ## nodeinfo.sort()
 
-See [ractive.sort()](../API/Instance Methods.md#ractive.sort()).
+See [ractive.sort()](../Instance Methods.md#ractive.sort()).
 
 ---
 
 ## nodeinfo.subtract()
 
-See [ractive.subtract()](../API/Instance Methods.md#ractive.subtract()).
+See [ractive.subtract()](../Instance Methods.md#ractive.subtract()).
 
 ---
 
 ## nodeinfo.toggle()
 
-See [ractive.toggle()](../API/Instance Methods.md#ractive.toggle()).
+See [ractive.toggle()](../Instance Methods.md#ractive.toggle()).
 
 ---
 
 ## nodeinfo.unlink()
 
-See [ractive.unlink()](../API/Instance Methods.md#ractive.unlink()).
+See [ractive.unlink()](../Instance Methods.md#ractive.unlink()).
 
 ---
 
 ## nodeinfo.unshift()
 
-See [ractive.unshift()](../API/Instance Methods.md#ractive.unshift()).
+See [ractive.unshift()](../Instance Methods.md#ractive.unshift()).
 
 ---
 
 ## nodeinfo.update()
 
-See [ractive.update()](../API/Instance Methods.md#ractive.update()).
+See [ractive.update()](../Instance Methods.md#ractive.update()).
 
 ---
 
 ## nodeinfo.updateModel()
 
-See [ractive.updateModel()](../API/Instance Methods.md#ractive.updateModel()).
+See [ractive.updateModel()](../Instance Methods.md#ractive.updateModel()).

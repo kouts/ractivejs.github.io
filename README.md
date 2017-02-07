@@ -1,27 +1,23 @@
 # Ractive.js Website
 
-## Requirements
-
-- Python 2.7
-- pip
-- virtualenv
-- mkdocs
-- mkdocs-cinder
-
 ## Setup
 
-```
-# 1. Install Python 2.7, pip and virtualenv
+```sh
+# Install the following. Installation procedure may vary by platform.
+# - Python 2.7
+# - pip
+# - virtualenv
 
-# 2. Create a virtualenv
+# Create a virtualenv and activate it
 virutalenv ractivejs.github.io
 cd ractivejs.github.io
+source ./bin/activate
 
-# 3. For this repo and clone your fork.
+# Fork this repo and clone your fork.
 git clone git@github.com:YOUR_USERNAME/ractivejs.github.io.git src
 cd src
 
-# 4. Install dependencies
+# Install dependencies
 pip install -r requirements.txt
 ```
 
@@ -33,6 +29,9 @@ mkdocs serve
 
 # Build the site
 mkdocs build
+
+# When done developing, deactivate the virtualenv
+deactivate
 ```
 
 Refer to the [mkdocs site](http://www.mkdocs.org) for more information.

@@ -1,6 +1,8 @@
-# Ractive.escapeKey()
+# Static Methods
 
-Escapes the given key so that it can be concatenated with a [keypath](../Under The Hood/Templates/Keypaths.md) string.
+## Ractive.escapeKey()
+
+Escapes the given key so that it can be concatenated with a [keypath](../Concepts/Templates/Keypaths.md) string.
 
 **Syntax**
 
@@ -22,9 +24,9 @@ Ractive.escapeKey('foo.bar'); // foo\.bar
 
 ---
 
-# Ractive.extend()
+## Ractive.extend()
 
-Creates a "subclass" of the Ractive constructor or a subclass constructor. See [`Components`](../Plugin Authoring/Components.md) for an in-depth discussion on the use of `Ractive.extend`.
+Creates a "subclass" of the Ractive constructor or a subclass constructor. See [`Components`](../Extend/Components.md) for an in-depth discussion on the use of `Ractive.extend`.
 
 **Syntax**
 
@@ -64,7 +66,7 @@ const instance2 = new SubClass({
 
 ---
 
-# Ractive.getCSS()
+## Ractive.getCSS()
 
 Returns the scoped CSS from Ractive subclasses defined at the time of the call.
 
@@ -109,9 +111,9 @@ const css = Ractive.getCSS([ 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' ]);
 
 ---
 
-# Ractive.getNodeInfo()
+## Ractive.getNodeInfo()
 
-Accepts a node and returns an [Node Info](../Helper Objects/Node Info Object.md) object containing details of the Ractive instance the node is associated to.
+Accepts a node and returns an [Node Info](Helper Objects/Node Info.md) object containing details of the Ractive instance the node is associated to.
 
 **Syntax**
 
@@ -123,7 +125,7 @@ Accepts a node and returns an [Node Info](../Helper Objects/Node Info Object.md)
 
 **Returns**
 
-- `(NodeInfo)`: An [NodeInfo](../Helper Objects/Node Info Object.md) object.
+- `(NodeInfo)`: An [NodeInfo](Helper Objects/Node Info.md) object.
 
 **Examples**
 
@@ -135,9 +137,9 @@ const info = Ractive.getNodeInfo('#some-node');
 
 ---
 
-# Ractive.joinKeys()
+## Ractive.joinKeys()
 
-Joins the given keys into a properly escaped [keypath](../Under The Hood/Templates/Keypaths.md) e.g. `
+Joins the given keys into a properly escaped [keypath](../Concepts/Templates/Keypaths.md) e.g. `
 
 **Syntax**
 
@@ -159,7 +161,7 @@ Ractive.joinKeys( 'foo', 'bar.baz' ); // foo.bar\.baz
 
 ---
 
-# Ractive.parse()
+## Ractive.parse()
 
 Parses the template into an abstract syntax tree that Ractive can work on.
 
@@ -227,9 +229,9 @@ TODO: `Ractive.parse` has more options. Document them.
 
 ---
 
-# Ractive.splitKeypath()
+## Ractive.splitKeypath()
 
-Splits the given [keypath](../Under The Hood/Templates/Keypaths.md) into an array of unescaped keys.
+Splits the given [keypath](../Concepts/Templates/Keypaths.md) into an array of unescaped keys.
 
 **Syntax**
 
@@ -237,7 +239,7 @@ Splits the given [keypath](../Under The Hood/Templates/Keypaths.md) into an arra
 
 **Arguments**
 
-- `keypath (string)`: The [keypath](../Under The Hood/Templates/Keypaths.md) to split into keys.
+- `keypath (string)`: The [keypath](../Concepts/Templates/Keypaths.md) to split into keys.
 
 **Returns**
 
@@ -251,7 +253,7 @@ Ractive.splitKeypath( 'foo.bar\.baz' ); // [ 'foo', 'bar.baz' ]
 
 ---
 
-# Ractive.unescapeKey()
+## Ractive.unescapeKey()
 
 Unescapes the given key e.g. `foo\.bar` => `foo.bar`.
 

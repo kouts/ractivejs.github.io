@@ -1,20 +1,22 @@
-# ractive.adaptors
+# Instance Properties
+
+## ractive.adaptors
 
 _`(Object<string, Object>)`_
 
-The instance-only registry of [adaptors](../Plugin Authoring/Adaptors.md).
+The instance-only registry of [adaptors](../Extend/Adaptors.md).
 
 ---
 
-# ractive.components
+## ractive.components
 
 _`(Object<string, Function>)`_
 
-The instance-only registry of [components](../Plugin Authoring/Components.md).
+The instance-only registry of [components](../Extend/Components.md).
 
 ---
 
-# ractive.container
+## ractive.container
 
 _`(Ractive)`_
 
@@ -32,37 +34,37 @@ If `bar` `{{yield}}`s, then `baz`'s container will be the `foo` instance.
 
 ---
 
-# ractive.decorators
+## ractive.decorators
 
 _`(Object<string, Function>)`_
 
-The instance-only registry of [decorators](../Plugin Authoring/Decorators.md).
+The instance-only registry of [decorators](../Extend/Decorators.md).
 
 ---
 
-# ractive.easing
+## ractive.easing
 
 _`(Object<string, Function>)`_
 
-The instance-only registry of [easing functions](../Plugin Authoring/Easings.md).
+The instance-only registry of [easing functions](../Extend/Easings.md).
 
 ---
 
-# ractive.events
+## ractive.events
 
 _`(Object<string, Function>)`_
 
-The instance-only registry of [events](../Plugin Authoring/Events.md).
+The instance-only registry of [events](../Extend/Events.md).
 
 ---
 
-# ractive.fragment
+## ractive.fragment
 
 TODO
 
 ---
 
-# ractive.interpolators
+## ractive.interpolators
 
 _`(Object<string, Function>)`_
 
@@ -70,7 +72,7 @@ A key-value hash of interpolators use by [`ractive.animate()`](../API/Instance M
 
 ---
 
-# ractive.nodes
+## ractive.nodes
 
 _`(Object<string, HTMLElement>)`_
 
@@ -106,7 +108,7 @@ ractive.nodes[ 'item_' + num ];
 
 ---
 
-# ractive.parent
+## ractive.parent
 
 _`(Ractive)`_
 
@@ -124,15 +126,15 @@ Each component instance can access its parent using `this.parent`.
 
 ---
 
-# ractive.partials
+## ractive.partials
 
 _`(Object<string, string|Object|Function>)`_
 
-The instance-only registry of [partials](../Plugin Authoring/Partials.md).
+The instance-only registry of [partials](../Extend/Partials.md).
 
 ---
 
-# ractive.root
+## ractive.root
 
 _`(Ractive)`_
 
@@ -150,14 +152,14 @@ Each component instance can access its root Ractive instance using `this.root`.
 
 ---
 
-# ractive.transitions
+## ractive.transitions
 
 _`(Object<string, Function>)`_
 
-The instance-only registry of [transitions](../Plugin Authoring/Transitions.md).
+The instance-only registry of [transitions](../Extend/Transitions.md).
 
 ---
 
-# ractive.viewmodel
+## ractive.viewmodel
 
 TODO
