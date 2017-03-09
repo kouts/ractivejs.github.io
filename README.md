@@ -36,6 +36,15 @@ deactivate
 
 Refer to the [mkdocs site](http://www.mkdocs.org) for more information.
 
+### Style guide
+
+- Add the page title as the first and only first-level header.
+- Use the appropriate markdown construct for the text.
+- For instance members, prefix with `ractive.`.
+- For static members, prefix with `Ractive.`.
+- For functions, suffix with `()`.
+- Be aware that headings 1, 2 and 3 appear on the sidebar.
+
 ## Notes
 
 - Everything is written in vanilla Markdown.

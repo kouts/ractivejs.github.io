@@ -2,7 +2,7 @@
 
 ## ractive.adaptors
 
-_`(Object<string, Object>)`_
+`(Object<string, Object>)`
 
 The instance-only registry of [adaptors](../Extend/Adaptors.md).
 
@@ -10,7 +10,7 @@ The instance-only registry of [adaptors](../Extend/Adaptors.md).
 
 ## ractive.components
 
-_`(Object<string, Function>)`_
+`(Object<string, Function>)`
 
 The instance-only registry of [components](../Extend/Components.md).
 
@@ -18,7 +18,7 @@ The instance-only registry of [components](../Extend/Components.md).
 
 ## ractive.container
 
-_`(Ractive)`_
+`(Ractive)`
 
 Each component instance that is in a yielded fragment has a container instance that is accessible using `this.container`.
 
@@ -36,7 +36,7 @@ If `bar` `{{yield}}`s, then `baz`'s container will be the `foo` instance.
 
 ## ractive.decorators
 
-_`(Object<string, Function>)`_
+`(Object<string, Function>)`
 
 The instance-only registry of [decorators](../Extend/Decorators.md).
 
@@ -44,7 +44,7 @@ The instance-only registry of [decorators](../Extend/Decorators.md).
 
 ## ractive.easing
 
-_`(Object<string, Function>)`_
+`(Object<string, Function>)`
 
 The instance-only registry of [easing functions](../Extend/Easings.md).
 
@@ -52,7 +52,7 @@ The instance-only registry of [easing functions](../Extend/Easings.md).
 
 ## ractive.events
 
-_`(Object<string, Function>)`_
+`(Object<string, Function>)`
 
 The instance-only registry of [events](../Extend/Events.md).
 
@@ -60,7 +60,7 @@ The instance-only registry of [events](../Extend/Events.md).
 
 ## ractive.interpolators
 
-_`(Object<string, Function>)`_
+`(Object<string, Function>)`
 
 A key-value hash of interpolators use by [`ractive.animate()`](../API/Instance Methods.md#ractive.animate()).
 
@@ -68,7 +68,7 @@ A key-value hash of interpolators use by [`ractive.animate()`](../API/Instance M
 
 ## ractive.nodes
 
-_`(Object<string, HTMLElement>)`_
+`(Object<string, HTMLElement>)`
 
 An object containing all of the elements inside the instance that have an `id` attribute.
 
@@ -104,7 +104,7 @@ ractive.nodes[ 'item_' + num ];
 
 ## ractive.parent
 
-_`(Ractive)`_
+`(Ractive)`
 
 Each component instance can access its parent using `this.parent`.
 
@@ -122,7 +122,7 @@ Each component instance can access its parent using `this.parent`.
 
 ## ractive.partials
 
-_`(Object<string, string|Object|Function>)`_
+`(Object<string, string|Object|Function>)`
 
 The instance-only registry of [partials](../Extend/Partials.md).
 
@@ -130,7 +130,7 @@ The instance-only registry of [partials](../Extend/Partials.md).
 
 ## ractive.root
 
-_`(Ractive)`_
+`(Ractive)`
 
 Each component instance can access its root Ractive instance using `this.root`.
 
@@ -148,7 +148,7 @@ Each component instance can access its root Ractive instance using `this.root`.
 
 ## ractive.transitions
 
-_`(Object<string, Function>)`_
+`(Object<string, Function>)`
 
 The instance-only registry of [transitions](../Extend/Transitions.md).
 

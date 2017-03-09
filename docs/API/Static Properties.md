@@ -2,47 +2,51 @@
 
 ## Ractive.adaptors
 
-_`(Object<string, Object>)`_
+`(Object<string, Object>)`
 
-The registry of globally available [adaptors](../Extend/Adaptors.md).
+A map of globally available [adaptors](../Extend/Adaptors.md), where the key is the adaptor name and the value is an adaptor definition.
 
 ---
 
 ## Ractive.components
 
-_`(Object<string, Function>)`_
+`(Object<string, Function>)`
 
-The registry of globally available [component definitions](../Extend/Components.md).
+A map of globally available [components](../Extend/Components.md), where the key is the component name and the value is a component definition.
 
 ---
 
 ## Ractive.DEBUG
 
-_`(boolean)`_
+`(boolean)`
 
-Tells Ractive if it's in debug mode or not. When set to `true`, non-fatal errors are logged. When set to `false`, non-fatal errors are suppressed. By default, this is set to `true`.
+Whether or not Ractive is in debug mode. Defaults to `true`.
+
+When set to `true`, warnings to non-fatal errors are logged. When set to `false`, warnings to non-fatal errors are suppressed.
 
 ---
 
 ## Ractive.DEBUG_PROMISES
 
-_`(boolean)`_
+`(boolean)`
 
-Tells Ractive to log errors thrown inside promises. When set to `true`, errors thrown in promises are logged. When set to `false`, errors inside promises are suppressed. By default, this is set to `true`.
+Whether or not Ractive logs errors thrown inside promises. Defaults to `true`.
+
+When set to `true`, errors thrown in promises are logged. When set to `false`, errors inside promises are suppressed.
 
 ---
 
 ## Ractive.decorators
 
-_`(Object<string, Function>)`_
+`(Object<string, Function>)`
 
-The registry of globally available [decorators](../Extend/Decorators.md).
+A map of globally available [decorators](../Extend/Decorators.md).
 
 ---
 
 ## Ractive.defaults
 
-_`(Object<string, any>)`_
+`(Object<string, any>)`
 
 The defaults for [initialisation options](../API/Initialization Options.md) with the exception of [plugin registries](../Integrations/Plugins.md).
 
@@ -52,72 +56,66 @@ Ractive.defaults.delimiters = [ '[[', ']]' ];
 
 // Future instances now use [[ ]]
 ractive1 = new Ractive({
-    template: 'hello [[world]]'
+  template: 'hello [[world]]'
 });
 ```
 
-Configurations set on the instance override the ones present in `Ractive.defaults`.
+Configurations set on lower initializations will override the ones set higher.
 
 ```js
-Ractive.defaults.delimiters = [ '[[', ']]' ];
+// Override delimiters globally
+Ractive.defaults.delimiters = [ '(%', '%)' ];
 
-// Uses the delimiters specified above
 new Ractive({
-	template: 'hello [[world]]'
+  template: 'hello (% world %)'
 });
 
-// Uses the delimiters specified in the init options
-new Ractive({
-	template: 'hello //world\\',
-	delimiters: [ '//', '\\' ]
+// Override delimiters for instances of this component
+const Component = Ractive.extend({
+  delimiters: [ '{%', '%}' ],
+  template: 'hello {% world %}'
 });
-```
 
-Defaults can also be specified a subclass of Ractive.
+new Component({ ... });
 
-```js
-var MyRactive = Ractive.extend();
-
-MyRactive.defaults.el = document.body;
+// Override delimiters for this specific instance
+new Ractive({
+  delimiters: [ '[%', '%]' ]
+  template: 'hello [% world %]',
+});
 ```
 
 ---
 
 ## Ractive.easing
 
-_`(Object<string, Function>)`_
+`(Object<string, Function>)`
 
-The global registry of [easing functions](../Extend/Easings.md).
+A map of globally available [easing functions](../Extend/Easings.md).
 
-The easing functions are used by the [`ractive.animate`](../API/Instance Methods.md#ractive.animate) method and by [transitions](../Extend/Transitions.md). Four are included by default: `linear`, `easeIn`, `easeOut` and `easeInOut`.
+Four are included by default: `linear`, `easeIn`, `easeOut` and `easeInOut`.
 
 ---
 
 ## Ractive.events
 
-_`(Object<string, Function>)`_
+`(Object<string, Function>)`
 
-The global registry of [events](../Extend/Events.md).
+A map of globally available [events](../Extend/Events.md).
 
 ---
 
 ## Ractive.interpolators
 
-_`(Object<string, Function>)`_
+`(Object<string, Function>)`
 
-A key-value hash of interpolators use by [`ractive.animate()`](../API/Instance Methods.md#ractive.animate()).
+A map of globally available [interpolators](../Extend/Interpolators.md).
 
 ---
 
 ## Ractive.length
 
 Since `Ractive` is a function, and functions have a `length` equal to their number of declared arguments, `Ractive` has a `length` of `1`.
-
----
-
-## Ractive.magic
-
-Indicates whether or not the current environment supports [magic mode](../Concepts/Data Binding/Magic Mode.md).
 
 ---
 
@@ -129,35 +127,27 @@ Like `length`, functions also have a `name`, and `Ractive`'s happens to be `"Rac
 
 ## Ractive.partials
 
-_`(Object<string, string|Object|Function>)`_
+`(Object<string, string|Object|Function>)`
 
-The global registry of [partial templates](../Extend/Partials.md).
+A map of globally available [partial templates](../Extend/Partials.md).
 
 Like [templates](../Concepts/Templates/Overview.md), partials are [parsed](../Concepts/Templates/Parsing.md) at the point of use. The parsed output is cached and utilized for future use.
 
 ---
 
-## Ractive.Promise
-
-_`(Function)`_
-
-A spec-compliant Promise implementation.
-
----
-
 ## Ractive.svg
 
-_`(boolean)`_
+`(boolean)`
 
-Indicates whether or not the browser supports SVG.
+Whether or not the browser supports SVG.
 
 ---
 
 ## Ractive.transitions
 
-_`(Object<string, Function>)`_
+`(Object<string, Function>)`
 
-The global registry of [transition functions](../Extend/Transitions.md).
+A map of globally available [transitions](../Extend/Transitions.md).
 
 ---
 

@@ -20,7 +20,7 @@ See [ractive.animate()](../Instance Methods.md#ractive.animate()).
 
 ## nodeinfo.context
 
-_`(any)`_
+`(any)`
 
 The data context of the node.
 
@@ -88,7 +88,7 @@ Ractive.getNodeInfo('#findMe').getBindingPath(); // Returns "foo.bar.baz"
 
 ## nodeinfo.index
 
-_`(number|undefined)`_
+`(number|undefined)`
 
 The index of `context` if it's in an array. If not in an array, the value is `undefined`.
 
@@ -128,7 +128,7 @@ Ractive.getNodeInfo('#bar').isBound(); // Returns false
 
 ## nodeinfo.keypath
 
-_`(string)`_
+`(string)`
 
 The [keypath](../../Concepts/Templates/Keypaths.md) to `context`.
 
@@ -148,7 +148,7 @@ See [ractive.merge()](../Instance Methods.md#ractive.merge()).
 
 ## nodeinfo.node
 
-_`(Node|undefined)`_
+`(Node|undefined)`
 
 The node the event originated from. Normally present when the event is a Ractive DOM. May be `undefined` on custom events or events from event plugins.
 
@@ -156,7 +156,7 @@ The node the event originated from. Normally present when the event is a Ractive
 
 ## nodeinfo.original
 
-_`(Event|undefined)`_
+`(Event|undefined)`
 
 The original DOM event object. Normally present when the event is a Ractive DOM event. May be `undefined` on custom events or events from event plugins.
 
